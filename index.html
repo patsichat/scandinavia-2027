@@ -28,6 +28,7 @@
     color: var(--birch);
     font-family:'IBM Plex Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
   }
   .wrap{max-width: 920px; margin: 0 auto; padding: 0 24px 100px;}
 
@@ -91,34 +92,44 @@
   }
   .route-chain .arrow{ opacity: 0.4; }
 
-  /* TAB BAR */
+  /* TAB BAR (bottom nav) */
   .tab-bar{
-    position: sticky;
-    top: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 20;
     display:flex;
     justify-content:center;
-    flex-wrap: wrap;
     gap: 4px;
-    padding: 14px 24px;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
     background: rgba(14,24,48,0.92);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
   }
   .tab-btn{
+    flex: 1;
+    max-width: 140px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    gap: 3px;
     font-family:'IBM Plex Mono', monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.1em;
+    font-size: 11px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--birch-dim);
     background: transparent;
     border: 1px solid transparent;
-    padding: 9px 18px;
-    border-radius: 100px;
+    padding: 8px 6px;
+    border-radius: 14px;
     cursor: pointer;
     transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     -webkit-tap-highlight-color: transparent;
   }
+  .tab-btn .icon{ font-size: 18px; line-height: 1; }
   .tab-btn:hover{ color: var(--birch); }
   .tab-btn.active{
     color: var(--midnight-deep);
@@ -444,11 +455,11 @@
   </div>
 </div>
 
-<div class="tab-bar">
-  <button class="tab-btn active" data-tab="itinerary">Itinerary</button>
-  <button class="tab-btn" data-tab="hotel">Hotel</button>
-  <button class="tab-btn" data-tab="budget">Budget</button>
-</div>
+<nav class="tab-bar">
+  <button class="tab-btn active" data-tab="itinerary"><span class="icon">🗺️</span>Itinerary</button>
+  <button class="tab-btn" data-tab="hotel"><span class="icon">🏨</span>Hotel</button>
+  <button class="tab-btn" data-tab="budget"><span class="icon">💰</span>Budget</button>
+</nav>
 
 <div id="panel-itinerary" class="tab-panel active">
 
