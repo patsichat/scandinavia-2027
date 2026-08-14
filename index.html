@@ -959,16 +959,23 @@
   const bounds = L.latLngBounds(latlngs);
   map.fitBounds(bounds, { padding: [40, 40] });
 
-  // Tab switching
+  // Tab switching (remembers scroll position per tab)
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
+  const scrollPositions = {};
+  let currentTab = document.querySelector('.tab-btn.active').dataset.tab;
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      const newTab = btn.dataset.tab;
+      if (newTab === currentTab) return;
+      scrollPositions[currentTab] = window.scrollY;
       tabBtns.forEach(b => b.classList.remove('active'));
       tabPanels.forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
-      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-      if (btn.dataset.tab === 'itinerary') {
+      document.getElementById('panel-' + newTab).classList.add('active');
+      currentTab = newTab;
+      window.scrollTo(0, scrollPositions[newTab] || 0);
+      if (newTab === 'itinerary') {
         setTimeout(() => map.invalidateSize(), 50);
       }
     });
