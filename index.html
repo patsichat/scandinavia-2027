@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scandinavia — Apr 3–17</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --midnight: #16233a;
+    --midnight-deep: #0e1830;
+    --panel: #1e304d;
+    --birch: #f4efe4;
+    --birch-dim: #cbd3e0;
+    --aurora-a: #6fe3c4;
+    --aurora-b: #9bd97f;
+    --sweden: #f6c945;
+    --norway: #e0645a;
+    --denmark: #e6857e;
+    --line: rgba(244,239,228,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background: var(--midnight);
+    color: var(--birch);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap{max-width: 920px; margin: 0 auto; padding: 0 24px 100px;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding: 80px 24px 60px;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 30% 0%, rgba(111,227,196,0.14), transparent 55%),
+      radial-gradient(ellipse at 75% 15%, rgba(155,217,127,0.10), transparent 50%),
+      var(--midnight-deep);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--birch-dim);
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.05;
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .grad{
+    background: linear-gradient(90deg, var(--aurora-a), var(--aurora-b));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p.sub{
+    font-size: 16px;
+    color: var(--birch-dim);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .route-chain{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--birch-dim);
+  }
+  .route-chain .city{
+    padding: 5px 12px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+  }
+  .route-chain .arrow{ opacity: 0.4; }
+
+  /* TAB BAR */
+  .tab-bar{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display:flex;
+    justify-content:center;
+    gap: 4px;
+    padding: 14px 24px;
+    background: rgba(14,24,48,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .tab-btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--birch-dim);
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 9px 18px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .tab-btn:hover{ color: var(--birch); }
+  .tab-btn.active{
+    color: var(--midnight-deep);
+    background: linear-gradient(90deg, var(--aurora-a), var(--aurora-b));
+    border-color: transparent;
+    font-weight: 600;
+  }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+
+  /* MAP */
+  .map-section{ padding: 48px 24px 0; }
+  #map{
+    height: 420px;
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    filter: saturate(0.85);
+  }
+  .leaflet-container{ background: #142238 !important; font-family:'IBM Plex Sans', sans-serif; }
+
+  /* SECTION HEADS */
+  .section-title{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--birch-dim);
+    margin: 64px 0 24px;
+    display:flex;
+    align-items:center;
+    gap: 12px;
+  }
+  .section-title::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background: var(--line);
+  }
+
+  /* TIMELINE */
+  .timeline{ position: relative; padding-left: 28px; }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left: 7px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--aurora-a), var(--norway) 40%, var(--denmark) 75%, var(--aurora-b));
+    opacity: 0.5;
+  }
+  .leg{ margin-bottom: 44px; }
+  .leg-head{
+    display:flex;
+    align-items:baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .leg-head::before{
+    content:"";
+    position:absolute;
+    left: -28px;
+    top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--dot, var(--aurora-a));
+    box-shadow: 0 0 0 4px var(--midnight), 0 0 12px var(--dot, var(--aurora-a));
+  }
+  .leg-city{
+    font-family:'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+  }
+  .leg-flag{ font-size: 20px; }
+  .leg-dates{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--birch-dim);
+  }
+
+  .day{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .day > summary{
+    display:grid;
+    grid-template-columns: 78px 1fr 20px;
+    gap: 16px;
+    padding: 14px 16px;
+    align-items: center;
+    cursor: pointer;
+    list-style: none;
+  }
+  .day > summary::-webkit-details-marker{ display:none; }
+  .day > summary::marker{ content:""; }
+  .day .date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--dot, var(--aurora-a));
+    font-weight: 500;
+  }
+  .day .plan{ font-size: 14.5px; line-height: 1.5; }
+  .day .sleep{
+    display:block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: var(--birch-dim);
+  }
+  .day .chevron{
+    color: var(--birch-dim);
+    transition: transform 0.2s ease;
+    justify-self: end;
+  }
+  .day[open] .chevron{ transform: rotate(180deg); }
+  .day-detail{
+    padding: 12px 16px 16px 110px;
+    border-top: 1px solid var(--line);
+  }
+  .day-detail ul{ margin:0; padding-left: 16px; }
+  .day-detail li{
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--birch-dim);
+    margin-bottom: 6px;
+  }
+  .day-detail li b{ color: var(--birch); font-weight: 500; }
+  @media (max-width: 560px){
+    .day-detail{ padding-left: 16px; }
+  }
+
+  /* HOTEL */
+  .hotel-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .hotel-card{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--dot, var(--aurora-a));
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .hotel-card .city{
+    font-family:'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .hotel-card .nights{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--dot, var(--aurora-a));
+    margin-bottom: 12px;
+  }
+  .hotel-card .field{
+    display:flex;
+    justify-content:space-between;
+    gap: 10px;
+    font-size: 13.5px;
+    padding: 7px 0;
+    border-top: 1px solid var(--line);
+    color: var(--birch-dim);
+  }
+  .hotel-card .field:first-of-type{ border-top: none; }
+  .hotel-card .field b{ color: var(--birch); font-weight: 500; }
+  .hotel-card .status{
+    display:inline-block;
+    margin-top: 12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(244,239,228,0.08);
+    color: var(--birch-dim);
+  }
+  @media (max-width: 640px){
+    .hotel-grid{ grid-template-columns: 1fr; }
+  }
+
+  /* BUDGET */
+  .budget-table{
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .budget-table th{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--birch-dim);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .budget-table th:last-child, .budget-table td:last-child{ text-align: right; }
+  .budget-table td{
+    padding: 13px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .budget-table td.cat{ font-weight: 500; }
+  .budget-table td.note{ color: var(--birch-dim); font-size: 12.5px; }
+  .budget-table tr:last-child td{ border-bottom: none; }
+  .budget-table tr.total td{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--aurora-a);
+    border-top: 2px solid var(--line);
+    padding-top: 16px;
+  }
+  .budget-caption{
+    font-size: 12.5px;
+    color: var(--birch-dim);
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+
+  /* NOTES */
+  .notes{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 26px;
+  }
+  .notes h3{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0 0 16px;
+  }
+  .notes ul{ margin:0; padding-left: 18px; }
+  .notes li{ margin-bottom: 12px; line-height: 1.6; font-size: 14.5px; color: var(--birch); }
+  .notes li b{ color: var(--aurora-a); font-weight: 600; }
+
+  footer{
+    text-align:center;
+    padding: 40px 24px 0;
+    color: var(--birch-dim);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 560px){
+    .day{ grid-template-columns: 62px 1fr; padding: 12px; }
+    .leg-city{ font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">Bangkok → Nordic Loop → Bangkok</div>
+  <h1>14 Days Across <span class="grad">Scandinavia</span></h1>
+  <p class="sub">Fjords, night trains, and an overnight cruise — Stockholm to Bergen to Oslo to Copenhagen and back, April 3–17.</p>
+  <div class="route-chain">
+    <span class="city">Stockholm</span><span class="arrow">→</span>
+    <span class="city">Bergen</span><span class="arrow">→</span>
+    <span class="city">Flåm</span><span class="arrow">→</span>
+    <span class="city">Oslo</span><span class="arrow">→</span>
+    <span class="city">Copenhagen</span><span class="arrow">→</span>
+    <span class="city">Stockholm</span>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="itinerary">Itinerary</button>
+  <button class="tab-btn" data-tab="hotel">Hotel</button>
+  <button class="tab-btn" data-tab="budget">Budget</button>
+</div>
+
+<div id="panel-itinerary" class="tab-panel active">
+
+<div class="map-section wrap">
+  <div id="map"></div>
+</div>
+
+<div class="wrap">
+
+  <div class="section-title">Day by day</div>
+
+  <div class="timeline">
+
+    <div class="leg" style="--dot: var(--sweden)">
+      <div class="leg-head">
+        <span class="leg-flag">🇸🇪</span>
+        <span class="leg-city">Stockholm</span>
+        <span class="leg-dates">ARRIVAL — APR 3</span>
+      </div>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 3</div>
+          <div class="plan">✈️ BKK → Stockholm ถึง ~16:05<span class="sleep">🇸🇪 Stockholm (แถวสนามบิน Arlanda)</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li><b>เช็คอินที่พัก</b> แถวสนามบิน Arlanda เพื่อสะดวกต่อเที่ยวบินเช้าวันรุ่งขึ้น</li>
+            <li>พักผ่อนชดเชยหลังบินยาว ไม่ต้องเข้าเมือง</li>
+            <li>มื้อเย็นง่ายๆ แถวโรงแรม เตรียมตัวบินไป Bergen เช้าวันถัดไป</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="leg" style="--dot: var(--norway)">
+      <div class="leg-head">
+        <span class="leg-flag">🇳🇴</span>
+        <span class="leg-city">Bergen</span>
+        <span class="leg-dates">APR 4–6</span>
+      </div>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 4</div>
+          <div class="plan">✈️ Stockholm → Bergen เที่ยวบินเช้า + เที่ยว Bergen<span class="sleep">🇳🇴 Bergen</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>บินเที่ยวเช้าจาก <b>Arlanda</b> ถึง Bergen ก่อนเที่ยง เหลือเวลาเที่ยวเกือบเต็มวัน</li>
+            <li><b>Bryggen</b> ย่านท่าเรือเก่า มรดกโลก UNESCO อาคารไม้สีสันสดใส</li>
+            <li>ขึ้น <b>Fløibanen funicular</b> สู่จุดชมวิว Fløyen มองเมือง Bergen ทั้งเมือง</li>
+            <li>เดินเล่น <b>Fish Market (Fisketorget)</b> ริมท่าเรือ</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 5</div>
+          <div class="plan">🛥️ Bergen → Flåm → 🚆 Flåm → Bergen<span class="sleep">🇳🇴 Bergen</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>เส้นทาง <b>Norway in a Nutshell</b> แบบไปกลับวันเดียวจาก Bergen</li>
+            <li>ล่องเรือฟยอร์ด <b>Nærøyfjord / Aurlandsfjord</b> ฟยอร์ดแคบสุดในนอร์เวย์</li>
+            <li>นั่ง <b>Flåm Railway</b> หนึ่งในทางรถไฟลาดชันที่สุดในโลก ผ่านน้ำตกและหุบเขา</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 6</div>
+          <div class="plan">Bergen เต็มวัน → 🌙 Night Train Bergen → Oslo<span class="sleep">🚆 Train</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>ขึ้น <b>Ulriken cable car</b> จุดชมวิวสูงสุดรอบ Bergen (อีกทางเลือกนอกจาก Fløyen)</li>
+            <li>แวะพิพิธภัณฑ์ศิลปะ <b>KODE</b> หรือเดินช้อปย่าน Bryggen เก็บของฝาก</li>
+            <li>ขึ้น <b>Night Train</b> จาก Bergen Station ช่วงค่ำ ถึง Oslo เช้าวันรุ่งขึ้น — เช็คตู้นอนล่วงหน้า</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="leg" style="--dot: var(--norway)">
+      <div class="leg-head">
+        <span class="leg-flag">🇳🇴</span>
+        <span class="leg-city">Oslo</span>
+        <span class="leg-dates">APR 7–9</span>
+      </div>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 7</div>
+          <div class="plan">ถึง Oslo ตอนเช้า → เที่ยว Oslo<span class="sleep">🇳🇴 Oslo</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>เก็บกระเป๋าที่พัก แล้วเดินเล่นย่าน <b>Aker Brygge</b> ริมน้ำ</li>
+            <li>เยี่ยมชม <b>Akershus Fortress</b> ป้อมปราการเก่าแก่ริมฟยอร์ด</li>
+            <li>พักผ่อนชดเชยหลังนอนรถไฟ ก่อนเริ่มวันเต็มวันพรุ่งนี้</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 8</div>
+          <div class="plan">Oslo เต็มวัน<span class="sleep">🇳🇴 Oslo</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li><b>Vigeland Sculpture Park</b> สวนประติมากรรมกลางแจ้งใหญ่ที่สุดในโลก</li>
+            <li><b>Museum of the Viking Age / Viking Ship Museum</b> เรือไวกิ้งโบราณ</li>
+            <li>ชม <b>Oslo Opera House</b> สถาปัตยกรรมหลังคาลาดที่เดินขึ้นไปชมวิวฟยอร์ดได้</li>
+            <li>ถ้ามีเวลาเหลือ แวะ <b>Munch Museum</b> หรือย่าน <b>Grünerløkka</b></li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 9</div>
+          <div class="plan">🚢 Oslo → Copenhagen (overnight cruise)<span class="sleep">🚢 Cruise</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>ขึ้นเรือ <b>DFDS overnight cruise</b> ช่วงบ่าย ล่องผ่าน Oslofjord</li>
+            <li>มื้อเย็นแบบ <b>buffet บนเรือ</b> พร้อมวิวพระอาทิตย์ตกกลางฟยอร์ด</li>
+            <li>ห้องพักบนเรือ = ที่พักในคืนนี้ ถึง Copenhagen เช้าวันรุ่งขึ้น</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="leg" style="--dot: var(--denmark)">
+      <div class="leg-head">
+        <span class="leg-flag">🇩🇰</span>
+        <span class="leg-city">Copenhagen</span>
+        <span class="leg-dates">APR 10–13</span>
+      </div>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 10</div>
+          <div class="plan">ถึง Copenhagen + เที่ยว<span class="sleep">🇩🇰 Copenhagen</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>เช็คอินที่พัก แล้วเดินเล่นย่าน <b>Nyhavn</b> ท่าเรือสีสันสดใสขึ้นชื่อของโคเปนเฮเกน</li>
+            <li>แวะดู <b>The Little Mermaid</b> รูปปั้นเงือกน้อยริมทะเล</li>
+            <li>ล่องเรือชมคลอง <b>canal tour</b> มุมมองเมืองจากผิวน้ำ</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 11</div>
+          <div class="plan">Copenhagen<span class="sleep">🇩🇰 Copenhagen</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li><b>Tivoli Gardens</b> สวนสนุกเก่าแก่กลางเมือง บรรยากาศดีตอนเย็น</li>
+            <li><b>Rosenborg Castle</b> ปราสาทเก่าพร้อมสวนสวย</li>
+            <li>ช้อปปิ้งถนนคนเดิน <b>Strøget</b></li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 12</div>
+          <div class="plan">Copenhagen<span class="sleep">🇩🇰 Copenhagen</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li><b>Freetown Christiania</b> ชุมชนอิสระ บรรยากาศศิลปะแปลกตา</li>
+            <li>ตลาดอาหาร <b>Torvehallerne</b> ของสด ของกินท้องถิ่น</li>
+            <li>ทริปเสริมไป <b>Malmö</b> ฝั่งสวีเดน นั่งรถไฟข้าม Øresund Bridge แค่ ~35 นาที</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 13</div>
+          <div class="plan">Copenhagen<span class="sleep">🇩🇰 Copenhagen</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>ทริปวันเดียวไป <b>Louisiana Museum of Modern Art</b> ริมทะเล ห่างจากเมืองราว 40 นาที</li>
+            <li>หรือเดินชม <b>National Museum of Denmark</b> ในเมือง</li>
+            <li>เก็บของฝาก มื้อสุดท้ายในโคเปนเฮเกนแบบสบายๆ</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="leg" style="--dot: var(--sweden)">
+      <div class="leg-head">
+        <span class="leg-flag">🇸🇪</span>
+        <span class="leg-city">Stockholm</span>
+        <span class="leg-dates">APR 14–17 — RETURN</span>
+      </div>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 14</div>
+          <div class="plan">🚆 Copenhagen → Stockholm<span class="sleep">🇸🇪 Stockholm</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>นั่งรถไฟข้าม <b>Øresund Bridge</b> เชื่อมเดนมาร์ก-สวีเดน วิวสวยช่วงข้ามสะพาน</li>
+            <li>ใช้เวลาเดินทางราวครึ่งวัน ถึง Stockholm ช่วงบ่าย/เย็น</li>
+            <li>เช็คอินที่พัก พักผ่อนก่อนวันเต็มวันถัดไป</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 15</div>
+          <div class="plan">Stockholm เต็มวัน<span class="sleep">🇸🇪 Stockholm</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li><b>Vasa Museum</b> เรือรบโบราณศตวรรษที่ 17 ที่กู้ขึ้นมาสมบูรณ์ที่สุดในโลก</li>
+            <li>เดินเล่น <b>Gamla Stan</b> ตอนกลางวัน ถ่ายรูปตรอก Mårten Trotzigs Gränd</li>
+            <li><b>Fotografiska</b> พิพิธภัณฑ์ภาพถ่าย พร้อมคาเฟ่วิวเมือง</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 16</div>
+          <div class="plan">Stockholm เต็มวัน<span class="sleep">🇸🇪 Stockholm</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li><b>Skansen</b> พิพิธภัณฑ์กลางแจ้งบนเกาะ Djurgården วิถีชีวิตสวีเดนดั้งเดิม + สวนสัตว์เล็กๆ</li>
+            <li><b>ABBA Museum</b> สำหรับคนชอบเพลง หรือ <b>Junibacken</b> สำหรับครอบครัว</li>
+            <li>ล่องเรือชม <b>หมู่เกาะ Stockholm Archipelago</b> ช่วงบ่าย ถ้าอากาศเอื้ออำนวย</li>
+            <li>มื้อเย็นสุดท้ายย่าน <b>Södermalm</b> คาเฟ่และร้านอาหารสไตล์อินดี้</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day">
+        <summary>
+          <div class="date">Apr 17</div>
+          <div class="plan">✈️ Stockholm → BKK<span class="sleep">—</span></div>
+          <span class="chevron">▾</span>
+        </summary>
+        <div class="day-detail">
+          <ul>
+            <li>เผื่อเวลาเดินทางไปสนามบิน Arlanda ล่วงหน้า</li>
+            <li>ซื้อของฝากสุดท้ายที่สนามบินหากมีเวลา</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<div id="panel-hotel" class="tab-panel">
+<div class="wrap">
+
+  <div class="section-title">Where to stay</div>
+
+  <div class="hotel-grid">
+
+    <div class="hotel-card" style="--dot: var(--sweden)">
+      <div class="city">🇸🇪 Stockholm — Arlanda</div>
+      <div class="nights">APR 3 · 1 คืน</div>
+      <div class="field"><span>ย่านแนะนำ</span><b>แถวสนามบิน Arlanda</b></div>
+      <div class="field"><span>เช็คอิน</span><b>Apr 3</b></div>
+      <div class="field"><span>เช็คเอาท์</span><b>Apr 4 (เช้า)</b></div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="hotel-card" style="--dot: var(--norway)">
+      <div class="city">🇳🇴 Bergen</div>
+      <div class="nights">APR 4–6 · 2 คืน</div>
+      <div class="field"><span>ย่านแนะนำ</span><b>ใกล้ Bryggen / Torget</b></div>
+      <div class="field"><span>เช็คอิน</span><b>Apr 4</b></div>
+      <div class="field"><span>เช็คเอาท์</span><b>Apr 6 (ก่อนขึ้นรถไฟกลางคืน)</b></div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="hotel-card" style="--dot: var(--norway)">
+      <div class="city">🇳🇴 Oslo</div>
+      <div class="nights">APR 7–9 · 2 คืน</div>
+      <div class="field"><span>ย่านแนะนำ</span><b>ใกล้ Oslo Central Station</b></div>
+      <div class="field"><span>เช็คอิน</span><b>Apr 7</b></div>
+      <div class="field"><span>เช็คเอาท์</span><b>Apr 9 (ก่อนขึ้นเรือ)</b></div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="hotel-card" style="--dot: var(--aurora-a)">
+      <div class="city">🚢 DFDS Cruise</div>
+      <div class="nights">APR 9–10 · 1 คืน (บนเรือ)</div>
+      <div class="field"><span>ประเภทห้อง</span><b>Sea view cabin แนะนำ</b></div>
+      <div class="field"><span>ขึ้นเรือ</span><b>Oslo, Apr 9</b></div>
+      <div class="field"><span>ถึง</span><b>Copenhagen, Apr 10</b></div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="hotel-card" style="--dot: var(--denmark)">
+      <div class="city">🇩🇰 Copenhagen</div>
+      <div class="nights">APR 10–14 · 4 คืน</div>
+      <div class="field"><span>ย่านแนะนำ</span><b>Indre By / Vesterbro</b></div>
+      <div class="field"><span>เช็คอิน</span><b>Apr 10</b></div>
+      <div class="field"><span>เช็คเอาท์</span><b>Apr 14</b></div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="hotel-card" style="--dot: var(--sweden)">
+      <div class="city">🇸🇪 Stockholm</div>
+      <div class="nights">APR 14–17 · 3 คืน</div>
+      <div class="field"><span>ย่านแนะนำ</span><b>Norrmalm / Södermalm</b></div>
+      <div class="field"><span>เช็คอิน</span><b>Apr 14</b></div>
+      <div class="field"><span>เช็คเอาท์</span><b>Apr 17</b></div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<div id="panel-budget" class="tab-panel">
+<div class="wrap">
+
+  <div class="section-title">Budget estimate</div>
+
+  <table class="budget-table">
+    <thead>
+      <tr><th>หมวด</th><th>รายละเอียด</th><th>ประมาณการ (THB)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat">✈️ ตั๋วเครื่องบิน</td>
+        <td class="note">BKK ↔ Stockholm + Stockholm → Bergen</td>
+        <td>35,000</td>
+      </tr>
+      <tr>
+        <td class="cat">🚆 รถไฟ</td>
+        <td class="note">Night train Bergen–Oslo, Copenhagen–Stockholm</td>
+        <td>8,000</td>
+      </tr>
+      <tr>
+        <td class="cat">🚢 เรือ</td>
+        <td class="note">DFDS overnight cruise Oslo–Copenhagen (ห้องพัก)</td>
+        <td>6,500</td>
+      </tr>
+      <tr>
+        <td class="cat">🛥️ ทัวร์ Flåm</td>
+        <td class="note">Norway in a Nutshell (เรือ+รถไฟ) วันเดียว</td>
+        <td>5,500</td>
+      </tr>
+      <tr>
+        <td class="cat">🏨 ที่พัก</td>
+        <td class="note">รวม 12 คืน (ไม่รวมคืนบนเรือ)</td>
+        <td>48,000</td>
+      </tr>
+      <tr>
+        <td class="cat">🍽️ อาหาร</td>
+        <td class="note">14 วัน เฉลี่ย ~1,800/วัน</td>
+        <td>25,000</td>
+      </tr>
+      <tr>
+        <td class="cat">🎟️ กิจกรรม/พิพิธภัณฑ์</td>
+        <td class="note">ค่าเข้าชมสถานที่ต่างๆ ตลอดทริป</td>
+        <td>12,000</td>
+      </tr>
+      <tr>
+        <td class="cat">🚇 เดินทางในเมือง</td>
+        <td class="note">ตั๋วขนส่งสาธารณะแต่ละเมือง</td>
+        <td>6,000</td>
+      </tr>
+      <tr>
+        <td class="cat">🧳 อื่นๆ / สำรอง</td>
+        <td class="note">ของฝาก ค่าใช้จ่ายฉุกเฉิน</td>
+        <td>10,000</td>
+      </tr>
+      <tr class="total">
+        <td colspan="2">รวมโดยประมาณ</td>
+        <td>~156,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="budget-caption">ตัวเลขเป็นการประมาณการเบื้องต้นต่อคน ยังไม่รวมส่วนลด/โปรโมชั่น ควรอัปเดตหลังจองตั๋วและที่พักจริง</p>
+
+</div>
+</div>
+
+<footer>SCANDINAVIA · APR 3–17</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  const cities = [
+    { name: "Stockholm", lat: 59.3327, lng: 18.0656, color: "#f6c945" },
+    { name: "Bergen",    lat: 60.3913, lng: 5.3221,  color: "#e0645a" },
+    { name: "Flåm",      lat: 60.8608, lng: 7.1118,  color: "#e0645a" },
+    { name: "Oslo",      lat: 59.9122, lng: 10.7313, color: "#e0645a" },
+    { name: "Copenhagen",lat: 55.6761, lng: 12.5683, color: "#e6857e" },
+    { name: "Stockholm", lat: 59.3327, lng: 18.0656, color: "#f6c945" }
+  ];
+
+  const map = L.map('map', {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    attributionControl: true
+  }).setView([59.5, 10.5], 5);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  const latlngs = cities.map(c => [c.lat, c.lng]);
+  const route = L.polyline(latlngs, {
+    color: '#6fe3c4',
+    weight: 2.5,
+    dashArray: '1, 10',
+    lineCap: 'round',
+    opacity: 0.85
+  }).addTo(map);
+
+  // animate dash offset for a traveling feel
+  let offset = 0;
+  setInterval(() => {
+    offset = (offset - 1 + 1000) % 1000;
+    route.setStyle({ dashOffset: String(offset) });
+  }, 60);
+
+  cities.forEach((c, i) => {
+    L.circleMarker([c.lat, c.lng], {
+      radius: 6,
+      color: c.color,
+      fillColor: c.color,
+      fillOpacity: 1,
+      weight: 2,
+      opacity: 1
+    })
+    .addTo(map)
+    .bindTooltip(c.name, { permanent: false, direction: 'top', offset: [0, -6] });
+  });
+
+  const bounds = L.latLngBounds(latlngs);
+  map.fitBounds(bounds, { padding: [40, 40] });
+
+  // Tab switching
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      if (btn.dataset.tab === 'itinerary') {
+        setTimeout(() => map.invalidateSize(), 50);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
