@@ -40,7 +40,8 @@
     background:
       radial-gradient(ellipse at 30% 0%, rgba(111,227,196,0.14), transparent 55%),
       radial-gradient(ellipse at 75% 15%, rgba(155,217,127,0.10), transparent 50%),
-      var(--midnight-deep);
+      linear-gradient(180deg, rgba(14,24,48,0.88), rgba(14,24,48,0.96) 70%, var(--midnight-deep) 100%),
+      url('https://commons.wikimedia.org/wiki/Special:FilePath/Aurora_borealis_above_Lyngenfjorden,_2012_March.jpg?width=1600') center 60% / cover no-repeat;
     border-bottom: 1px solid var(--line);
   }
   .hero .eyebrow{
@@ -199,6 +200,28 @@
     font-family:'IBM Plex Mono', monospace;
     font-size: 12px;
     color: var(--birch-dim);
+  }
+  .leg-image{
+    height: 200px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--line);
+    margin: 0 0 20px;
+    filter: saturate(0.9);
+  }
+  .day-image{
+    height: 140px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid var(--line);
+    margin: 0 0 14px;
+    filter: saturate(0.9);
+  }
+  @media (max-width: 560px){
+    .leg-image{ height: 150px; }
+    .day-image{ height: 110px; }
   }
 
   .day{
@@ -445,6 +468,7 @@
         <span class="leg-city">Stockholm</span>
         <span class="leg-dates">ARRIVAL — APR 3</span>
       </div>
+      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Stora_Nygatan_-_Gamla_stan_-_Stockholm_-_October_2015_-_Holmstad.JPG?width=900')"></div>
       <details class="day">
         <summary>
           <div class="date">Apr 3</div>
@@ -467,6 +491,7 @@
         <span class="leg-city">Bergen</span>
         <span class="leg-dates">APR 4–6</span>
       </div>
+      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Bryggen_-_Bergen,_Norway.jpg?width=900')"></div>
       <details class="day">
         <summary>
           <div class="date">Apr 4</div>
@@ -489,6 +514,7 @@
           <span class="chevron">▾</span>
         </summary>
         <div class="day-detail">
+          <div class="day-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/00_2795_Fl%C3%A5m,_a_place_in_Norway.jpg?width=800')"></div>
           <ul>
             <li>เส้นทาง <b>Norway in a Nutshell</b> แบบไปกลับวันเดียวจาก Bergen</li>
             <li>ล่องเรือฟยอร์ด <b>Nærøyfjord / Aurlandsfjord</b> ฟยอร์ดแคบสุดในนอร์เวย์</li>
@@ -518,6 +544,7 @@
         <span class="leg-city">Oslo</span>
         <span class="leg-dates">APR 7–9</span>
       </div>
+      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Operahuset_-_Oslo_Opera_House_-_Oslo,_Norway_2020-09-16_(01).jpg?width=900')"></div>
       <details class="day">
         <summary>
           <div class="date">Apr 7</div>
@@ -569,6 +596,7 @@
         <span class="leg-city">Copenhagen</span>
         <span class="leg-dates">APR 10–13</span>
       </div>
+      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn_Copenhagen_2.jpg?width=900')"></div>
       <details class="day">
         <summary>
           <div class="date">Apr 10</div>
@@ -633,6 +661,7 @@
         <span class="leg-city">Stockholm</span>
         <span class="leg-dates">APR 14–17 — RETURN</span>
       </div>
+      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Sweden._Stockholm._Gamla_stan_051.JPG?width=900')"></div>
       <details class="day">
         <summary>
           <div class="date">Apr 14</div>
