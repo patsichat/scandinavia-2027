@@ -284,9 +284,18 @@
     .day-detail{ padding-left: 0; }
   }
 
-  /* HOTEL */
-  .hotel-list{ display: flex; flex-direction: column; }
-  .hotel-row{
+  /* BOOKING */
+  .booking-group-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--birch-dim);
+    margin: 36px 0 4px;
+  }
+  .booking-group-title:first-of-type{ margin-top: 0; }
+  .booking-list{ display: flex; flex-direction: column; }
+  .booking-row{
     display: grid;
     grid-template-columns: 4px 1fr auto;
     gap: 20px;
@@ -294,39 +303,39 @@
     padding: 22px 0;
     border-bottom: 1px solid var(--line);
   }
-  .hotel-row:last-child{ border-bottom: none; }
-  .hotel-row .dot{
+  .booking-row:last-child{ border-bottom: none; }
+  .booking-row .dot{
     align-self: stretch;
     width: 4px;
     border-radius: 2px;
     background: var(--dot, var(--aurora-a));
   }
-  .hotel-row .city{
+  .booking-row .city{
     font-family:'Fraunces', serif;
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 4px;
   }
-  .hotel-row .nights{
+  .booking-row .nights{
     font-family:'IBM Plex Mono', monospace;
     font-size: 12px;
     color: var(--dot, var(--aurora-a));
     margin-bottom: 14px;
   }
-  .hotel-row .fields{
+  .booking-row .fields{
     display: flex;
     flex-wrap: wrap;
     gap: 4px 28px;
   }
-  .hotel-row .field{
+  .booking-row .field{
     display:flex;
     gap: 6px;
     font-size: 13.5px;
     color: var(--birch-dim);
   }
-  .hotel-row .field span::after{ content: ":"; }
-  .hotel-row .field b{ color: var(--birch); font-weight: 500; }
-  .hotel-row .status{
+  .booking-row .field span::after{ content: ":"; }
+  .booking-row .field b{ color: var(--birch); font-weight: 500; }
+  .booking-row .status{
     justify-self: end;
     white-space: nowrap;
     font-family:'IBM Plex Mono', monospace;
@@ -337,8 +346,8 @@
     padding-top: 2px;
   }
   @media (max-width: 640px){
-    .hotel-row{ grid-template-columns: 4px 1fr; }
-    .hotel-row .status{ grid-column: 2; justify-self: start; padding-top: 8px; }
+    .booking-row{ grid-template-columns: 4px 1fr; }
+    .booking-row .status{ grid-column: 2; justify-self: start; padding-top: 8px; }
   }
 
   /* BUDGET */
@@ -457,7 +466,7 @@
 
 <nav class="tab-bar">
   <button class="tab-btn active" data-tab="itinerary"><span class="icon">🗺️</span>Itinerary</button>
-  <button class="tab-btn" data-tab="hotel"><span class="icon">🏨</span>Hotel</button>
+  <button class="tab-btn" data-tab="booking"><span class="icon">🧾</span>รายการจอง</button>
   <button class="tab-btn" data-tab="budget"><span class="icon">💰</span>Budget</button>
 </nav>
 
@@ -737,14 +746,112 @@
 
 </div>
 
-<div id="panel-hotel" class="tab-panel">
+<div id="panel-booking" class="tab-panel">
 <div class="wrap">
 
-  <div class="section-title">Where to stay</div>
+  <div class="section-title">รายการที่ต้องจอง</div>
 
-  <div class="hotel-list">
+  <div class="booking-group-title">✈️ ตั๋วเดินทาง (เครื่องบิน / รถไฟ / เรือ)</div>
 
-    <div class="hotel-row" style="--dot: var(--sweden)">
+  <div class="booking-list">
+
+    <div class="booking-row" style="--dot: var(--sweden)">
+      <div class="dot"></div>
+      <div>
+        <div class="city">✈️ BKK → Stockholm</div>
+        <div class="nights">APR 3 · เที่ยวบินระหว่างประเทศ</div>
+        <div class="fields">
+          <div class="field"><span>ออกเดินทาง</span><b>Bangkok</b></div>
+          <div class="field"><span>ถึง</span><b>Stockholm ~16:05</b></div>
+        </div>
+      </div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="booking-row" style="--dot: var(--sweden)">
+      <div class="dot"></div>
+      <div>
+        <div class="city">✈️ Stockholm → Bergen</div>
+        <div class="nights">APR 4 · เที่ยวบินเช้า</div>
+        <div class="fields">
+          <div class="field"><span>ออกเดินทาง</span><b>Stockholm</b></div>
+          <div class="field"><span>ถึง</span><b>Bergen</b></div>
+        </div>
+      </div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="booking-row" style="--dot: var(--norway)">
+      <div class="dot"></div>
+      <div>
+        <div class="city">🛥️🚆 Norway in a Nutshell</div>
+        <div class="nights">APR 5 · ทัวร์วันเดียว Bergen → Flåm → Bergen</div>
+        <div class="fields">
+          <div class="field"><span>ประกอบด้วย</span><b>เรือฟยอร์ด + Flåm Railway</b></div>
+        </div>
+      </div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="booking-row" style="--dot: var(--norway)">
+      <div class="dot"></div>
+      <div>
+        <div class="city">🌙🚆 Night Train Bergen → Oslo</div>
+        <div class="nights">APR 6 · รถไฟกลางคืน</div>
+        <div class="fields">
+          <div class="field"><span>ประเภทตู้นอน</span><b>ยังไม่ระบุ</b></div>
+        </div>
+      </div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="booking-row" style="--dot: var(--aurora-a)">
+      <div class="dot"></div>
+      <div>
+        <div class="city">🚢 DFDS Cruise Oslo → Copenhagen</div>
+        <div class="nights">APR 9–10 · 1 คืน (บนเรือ)</div>
+        <div class="fields">
+          <div class="field"><span>ประเภทห้อง</span><b>Sea view cabin แนะนำ</b></div>
+          <div class="field"><span>ขึ้นเรือ</span><b>Oslo, Apr 9</b></div>
+          <div class="field"><span>ถึง</span><b>Copenhagen, Apr 10</b></div>
+        </div>
+      </div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="booking-row" style="--dot: var(--denmark)">
+      <div class="dot"></div>
+      <div>
+        <div class="city">🚆 Copenhagen → Stockholm</div>
+        <div class="nights">APR 14 · รถไฟ</div>
+        <div class="fields">
+          <div class="field"><span>ออกเดินทาง</span><b>Copenhagen</b></div>
+          <div class="field"><span>ถึง</span><b>Stockholm</b></div>
+        </div>
+      </div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+    <div class="booking-row" style="--dot: var(--sweden)">
+      <div class="dot"></div>
+      <div>
+        <div class="city">✈️ Stockholm → BKK</div>
+        <div class="nights">APR 17 · เที่ยวบินระหว่างประเทศ</div>
+        <div class="fields">
+          <div class="field"><span>ออกเดินทาง</span><b>Stockholm</b></div>
+          <div class="field"><span>ถึง</span><b>Bangkok</b></div>
+        </div>
+      </div>
+      <span class="status">ยังไม่จอง</span>
+    </div>
+
+  </div>
+
+  <div class="booking-group-title">🏨 ที่พัก</div>
+
+  <div class="booking-list">
+
+    <div class="booking-row" style="--dot: var(--sweden)">
       <div class="dot"></div>
       <div>
         <div class="city">🇸🇪 Stockholm — Arlanda</div>
@@ -758,7 +865,7 @@
       <span class="status">ยังไม่จอง</span>
     </div>
 
-    <div class="hotel-row" style="--dot: var(--norway)">
+    <div class="booking-row" style="--dot: var(--norway)">
       <div class="dot"></div>
       <div>
         <div class="city">🇳🇴 Bergen</div>
@@ -772,7 +879,7 @@
       <span class="status">ยังไม่จอง</span>
     </div>
 
-    <div class="hotel-row" style="--dot: var(--norway)">
+    <div class="booking-row" style="--dot: var(--norway)">
       <div class="dot"></div>
       <div>
         <div class="city">🇳🇴 Oslo</div>
@@ -786,21 +893,7 @@
       <span class="status">ยังไม่จอง</span>
     </div>
 
-    <div class="hotel-row" style="--dot: var(--aurora-a)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🚢 DFDS Cruise</div>
-        <div class="nights">APR 9–10 · 1 คืน (บนเรือ)</div>
-        <div class="fields">
-          <div class="field"><span>ประเภทห้อง</span><b>Sea view cabin แนะนำ</b></div>
-          <div class="field"><span>ขึ้นเรือ</span><b>Oslo, Apr 9</b></div>
-          <div class="field"><span>ถึง</span><b>Copenhagen, Apr 10</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="hotel-row" style="--dot: var(--denmark)">
+    <div class="booking-row" style="--dot: var(--denmark)">
       <div class="dot"></div>
       <div>
         <div class="city">🇩🇰 Copenhagen</div>
@@ -814,7 +907,7 @@
       <span class="status">ยังไม่จอง</span>
     </div>
 
-    <div class="hotel-row" style="--dot: var(--sweden)">
+    <div class="booking-row" style="--dot: var(--sweden)">
       <div class="dot"></div>
       <div>
         <div class="city">🇸🇪 Stockholm</div>
