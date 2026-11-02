@@ -1,1058 +1,180 @@
 <!DOCTYPE html>
+
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scandinavia — Apr 3–18</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#153d3d" name="theme-color"/>
+<meta content="Scandinavia Family Trip 2027 — แผนเที่ยว 15 วันแบบ Interactive Timeline: Bergen, Oslo, Copenhagen, Stockholm" name="description"/>
+<title>Scandinavia 2027 · Family Trip Timeline</title>
 <style>
-  :root{
-    --midnight: #16233a;
-    --midnight-deep: #0e1830;
-    --panel: #1e304d;
-    --birch: #f4efe4;
-    --birch-dim: #cbd3e0;
-    --aurora-a: #6fe3c4;
-    --aurora-b: #9bd97f;
-    --sweden: #f6c945;
-    --norway: #e0645a;
-    --denmark: #e6857e;
-    --line: rgba(244,239,228,0.14);
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background: var(--midnight);
-    color: var(--birch);
-    font-family:'IBM Plex Sans', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    padding-bottom: calc(72px + env(safe-area-inset-bottom));
-  }
-  .wrap{max-width: 920px; margin: 0 auto; padding: 0 24px 100px;}
+:root{--bg:#f4f6f3;--paper:#ffffff;--ink:#1e3035;--muted:#6c7c7e;--line:#dde5e2;--forest:#183e40;--forest2:#27595a;--ocean:#2c7176;--orange:#dca675;--sage:#d9e8e1;--sand:#f7efe3;--shadow:0 18px 60px rgba(24,52,53,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:108px}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,sans-serif;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.65}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #e6ae68;outline-offset:3px}body.modal-open{overflow:hidden}
+.page{width:min(1420px,calc(100% - 64px));margin:0 auto}.topbar{height:76px;background:rgba(250,251,249,.93);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;backdrop-filter:blur(14px)}.topbar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:.16em;font-size:15px;color:#21494a}.brand-mark{height:32px;width:32px;border-radius:10px;background:#1d4b4c;color:#e4eedf;display:grid;place-items:center;font-size:20px}.brand span em{font-style:normal;color:#9daea9;font-weight:600}.toplinks{display:flex;align-items:center;gap:29px;color:#607273;font-size:12px;font-weight:750;letter-spacing:.02em}.toplinks a:hover{color:var(--forest)}.actions{display:flex;gap:8px;align-items:center}.mini-btn{border:1px solid #dce5e2;background:#fff;color:#23484a;padding:10px 13px;border-radius:11px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;white-space:nowrap}.mini-btn:hover{background:#eaf0ed}.icon{height:16px;width:16px;display:inline-block;vertical-align:middle;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}.hero{padding-top:27px}.hero-card{background:linear-gradient(120deg,#143639 0%,#214f50 62%,#2a5550 100%);border-radius:27px;color:#f7f7ef;position:relative;overflow:hidden;min-height:405px;box-shadow:0 22px 60px rgba(17,57,57,.12)}.hero-glow{position:absolute;width:780px;height:570px;right:-150px;top:-230px;background:radial-gradient(ellipse at center,rgba(158,211,174,.25) 0%,rgba(81,145,130,.1) 38%,transparent 67%);border-radius:50%}.hero-pattern{position:absolute;right:0;top:0;width:52%;height:100%;opacity:.88;pointer-events:none}.hero-main{position:relative;z-index:1;padding:58px 60px 44px;max-width:830px}.eyebrow{display:flex;align-items:center;gap:12px;text-transform:uppercase;letter-spacing:.19em;color:#c2d7c8;font-size:11px;font-weight:800}.eyebrow:before{content:"";width:24px;height:1px;background:#c4d1ae}.hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(46px,5.2vw,82px);font-weight:400;letter-spacing:-.05em;line-height:1.04;margin:22px 0 13px}.hero h1 span{font-style:italic;color:#d9e2c5}.hero-desc{font-size:14px;color:#cee0d9;max-width:570px;line-height:1.9;margin:0 0 27px}.hero-badges{display:flex;gap:10px;flex-wrap:wrap}.hero-badges span{font-size:11px;border:1px solid rgba(238,246,232,.24);background:rgba(248,254,247,.07);border-radius:100px;padding:8px 13px;color:#dceadf;font-weight:650}.hero-badges b{color:#fff}.hero-footer{margin-top:45px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.route-stop{display:flex;align-items:center;gap:9px;color:#f5f7eb;font-size:12px;font-weight:800}.route-dot{display:block;width:8px;height:8px;border:2px solid #e5bd89;border-radius:50%;box-shadow:0 0 0 4px rgba(225,186,133,.12)}.route-stroke{width:39px;height:1px;background:repeating-linear-gradient(90deg,#9bc1b5 0px,#9bc1b5 5px,transparent 5px,transparent 10px);opacity:.9}.route-stop span.city-small{font-size:10px;color:#c2d4cf;font-weight:600;margin-left:2px}.hero-bottom{position:relative;z-index:1;background:rgba(10,37,39,.26);border-top:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:repeat(4,1fr);padding:20px 54px;gap:10px}.hero-stat{padding:0 16px;border-right:1px solid rgba(255,255,255,.13)}.hero-stat:last-child{border-right:none}.hero-stat strong{font-family:Georgia,serif;font-weight:400;font-size:30px;line-height:1.12;margin-right:7px}.hero-stat span{font-size:11px;color:#c4d6d1;letter-spacing:.02em}
+.section-block{margin-top:44px}.section-label{font-size:10px;font-weight:850;letter-spacing:.17em;text-transform:uppercase;color:#8c9d9a}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:10px 0 22px}.section-heading h2{font-family:Georgia,serif;font-size:35px;font-weight:400;letter-spacing:-.035em;line-height:1.14;margin:0}.section-heading p{color:var(--muted);margin:0;font-size:12px}.overview{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.city-card{border:1px solid var(--line);background:#fff;border-radius:17px;overflow:hidden;transition:transform .2s,box-shadow .2s}.city-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.city-art{height:111px;position:relative;overflow:hidden;display:flex;align-items:end;padding:16px}.city-art svg{position:absolute;right:-3px;bottom:-6px;width:90%;height:103%;opacity:.68}.city-card .city-meta{padding:17px 18px 18px}.city-meta .where{font-size:10px;color:#75908d;letter-spacing:.12em;font-weight:850;text-transform:uppercase}.city-meta h3{font-family:Georgia,serif;font-size:24px;letter-spacing:-.03em;font-weight:400;line-height:1.1;margin:6px 0}.city-meta p{margin:0;color:#7d8b88;font-size:12px}.bergen-art{background:linear-gradient(125deg,#c4deda,#e0ebe3)}.oslo-art{background:linear-gradient(120deg,#d6e6e6,#edf2ec)}.cph-art{background:linear-gradient(120deg,#f6ddc5,#f5e9d4)}.sto-art{background:linear-gradient(120deg,#d6e0e7,#e7eced)}.city-art .art-label{position:relative;z-index:1;font-weight:850;letter-spacing:.07em;color:rgba(32,72,71,.5);font-size:10px}
+.info-strip{margin-top:17px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.info-note{padding:15px 17px;border:1px solid #dfe7e2;border-radius:13px;background:#f8faf8;display:flex;gap:12px;align-items:flex-start;font-size:12px;color:#637873}.info-note .sign{border-radius:9px;padding:2px 7px;background:#e6eee9;color:#376b62;font-weight:900}.info-note b{color:#264948}
+.timeline-header{padding-top:14px;position:sticky;top:76px;z-index:25;background:linear-gradient(to bottom,var(--bg) 90%,rgba(244,246,243,.75));padding-bottom:15px}.timeline-heading{display:flex;align-items:end;justify-content:space-between;gap:15px}.filterbar{display:flex;gap:7px;overflow-x:auto;padding:12px 0 1px;scrollbar-width:none}.filterbar::-webkit-scrollbar{display:none}.filter{border:1px solid #dce4e0;padding:9px 15px;border-radius:100px;background:#fff;color:#6a7b7c;font-size:12px;font-weight:800;white-space:nowrap;transition:all .15s}.filter[aria-pressed=true]{background:#1d4c4e;color:#fff;border-color:#1d4c4e}.filter:not([aria-pressed=true]):hover{background:#e8f1ec}.timeline-layout{display:grid;grid-template-columns:186px minmax(0,1fr) 275px;align-items:start;gap:22px;margin-top:4px}.day-index{position:sticky;top:214px;max-height:calc(100vh - 235px);overflow:auto;scrollbar-width:thin;padding:13px 11px 13px 0}.day-index-caption{color:#8ca19d;font-size:10px;font-weight:850;letter-spacing:.13em;padding:0 0 12px 9px}.day-link{display:flex;align-items:center;gap:9px;padding:9px 9px;border-radius:12px;margin:0 0 2px;color:#7b8b8b;border:1px solid transparent;text-align:left;width:100%;background:transparent}.day-link:hover{background:#e8eeeb}.day-link.active{background:#fff;color:#235455;border-color:#dce6e0;box-shadow:0 4px 13px rgba(27,56,54,.045)}.day-link .n{font-size:11px;font-weight:850;width:21px}.day-link .d{font-size:11px;font-weight:850}.day-link small{display:block;font-size:10px;font-weight:500;color:#97a7a3;max-width:105px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.index-split{height:1px;background:var(--line);margin:11px 8px}.day-link[data-country=sea] .n{color:#bc8750}
+.days{min-width:0}.day-panel{background:var(--paper);border:1px solid #e0e7e3;border-radius:18px;margin-bottom:16px;box-shadow:0 5px 28px rgba(28,67,63,.025);overflow:hidden;scroll-margin-top:216px}.day-panel.hidden{display:none}.day-head{display:flex;gap:16px;align-items:center;padding:20px 24px;border-bottom:1px solid #edf1ee}.day-number{width:60px;min-width:60px;height:62px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#ebf1ed;color:#285754}.day-panel[data-country=dk] .day-number{background:#f7eee2;color:#916c49}.day-panel[data-country=se] .day-number{background:#eaf0f5;color:#59758a}.day-panel[data-country=sea] .day-number{background:#e8f1ef;color:#347b75}.day-number strong{font-size:23px;line-height:1.05;font-family:Georgia,serif;font-weight:500}.day-number small{font-size:9px;letter-spacing:.15em;font-weight:850}.day-top{min-width:0;flex:1}.day-small{display:flex;align-items:center;gap:8px;color:#8c9d9c;font-weight:800;font-size:10px;letter-spacing:.09em;text-transform:uppercase}.city-pin{display:inline-flex;align-items:center;gap:5px;color:#5b8480;font-weight:800;letter-spacing:.02em}.city-pin:before{content:"";width:6px;height:6px;border-radius:50%;background:#9fc7a7}.day-top h3{margin:4px 0 0;font-size:19px;font-weight:800;letter-spacing:-.03em;line-height:1.4}.collapse{border:1px solid #e1e8e4;border-radius:8px;background:#fff;width:33px;height:33px;display:grid;place-items:center;color:#79928e;flex-shrink:0;transition:transform .2s}.collapsed .collapse svg{transform:rotate(-90deg)}.events{padding:16px 26px 19px 30px}.collapsed .events,.collapsed .overnight{display:none}.event{display:grid;grid-template-columns:117px 20px minmax(0,1fr);gap:13px;position:relative;min-height:84px}.event:not(:last-child) .event-stem:after{content:"";position:absolute;top:18px;bottom:-10px;left:50%;border-left:1px solid #dbe7e1;transform:translateX(-50%)}.event-time{font-size:11px;font-weight:800;color:#708c89;padding-top:9px;text-align:right;line-height:1.55;font-variant-numeric:tabular-nums}.event-stem{position:relative;display:flex;justify-content:center;padding-top:9px}.event-icon{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#e6efe9;color:#527c6c;position:relative;z-index:1}.event-icon svg{height:12px;width:12px}.event[data-type=flight] .event-icon,.event[data-type=rail] .event-icon,.event[data-type=ship] .event-icon{background:#dfece9;color:#1e6a64}.event[data-type=food] .event-icon{background:#f8ead9;color:#aa8258}.event[data-type=stay] .event-icon{background:#edf0f7;color:#7b839e}.event-detail{padding:3px 0 20px}.event-title{font-size:13px;font-weight:800;line-height:1.48;color:#273f43}.event-desc{font-size:12px;color:#73837f;margin:4px 0 0;line-height:1.65}.event-extra{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}.status{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:800;padding:3px 9px;border-radius:6px}.status.booked{background:#e2f2e7;color:#247052}.status.tobook{background:#fff2de;color:#946724}.status.warning{background:#fff0e8;color:#b26645}.status.plan{background:#eef2f0;color:#7b8b87}.event-extra .event-note{font-size:10px;color:#95a19d}.overnight{background:#f4f7f4;border-top:1px solid #e8eee9;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11px;color:#627e79}.overnight strong{color:#345d58;font-weight:850}.overnight .label{color:#a1b0a8;text-transform:uppercase;letter-spacing:.1em;font-weight:850;font-size:9px}.empty-state{display:none;text-align:center;padding:60px 20px;border:1px dashed #cbdcd5;border-radius:18px;color:#81948d}.empty-state.show{display:block}
+.right-rail{position:sticky;top:211px;padding-top:4px;display:flex;flex-direction:column;gap:14px}.aside-card{border:1px solid var(--line);background:#fff;border-radius:17px;padding:21px}.aside-title{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:#8aa09a;font-weight:850;margin-bottom:14px}.aside-card h3{margin:0;font-size:14px;letter-spacing:-.02em}.booking-row{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-top:1px solid #ecf0ed}.booking-row:first-of-type{border-top:0}.booking-row .booking-name{font-size:12px;font-weight:750}.booking-row small{display:block;font-size:10px;color:#90a29f;margin-top:2px}.tag{font-size:9px;white-space:nowrap;padding:5px 7px;font-weight:850;border-radius:6px;letter-spacing:.01em}.tag.ok{background:#e3f2e9;color:#247154}.tag.wait{background:#fff2dc;color:#a27231}.budget-card{background:#184648;color:#fff;border:none}.budget-card .aside-title{color:#afd0c6}.money{font-size:27px;font-family:Georgia,serif;line-height:1.1;color:#fff}.money small{font-size:11px;color:#c3dad5;display:block;margin:5px 0 12px;font-family:Inter,sans-serif}.budget-split{border-top:1px solid rgba(255,255,255,.15);padding-top:12px;font-size:12px;color:#d4e8e0;line-height:1.8}.aside-foot{font-size:11px;line-height:1.8;color:#859a93;margin-top:8px}.link-line{border-top:1px solid #ebf0ed;margin-top:13px;padding-top:12px}.link-line a{display:inline-block;color:#357d76;font-size:11px;font-weight:800;margin:5px 5px 5px 0;text-decoration:underline;text-underline-offset:4px}.notice{border-radius:13px;background:#fff8ec;border:1px solid #f2e4c9;padding:14px 16px;color:#946c3d;font-size:11px;line-height:1.8}.notice strong{color:#825a26}
+.section-footer{padding:44px 0 56px;text-align:center;color:#849792;font-size:11px}.section-footer strong{font-family:Georgia,serif;font-weight:400;color:#426864;font-size:26px;display:block;margin-bottom:9px}.section-footer a{color:#397d75;text-decoration:underline}.print-only{display:none}
+@media(max-width:1220px){.timeline-layout{grid-template-columns:155px minmax(0,1fr) 244px;gap:15px}.right-rail .aside-card{padding:15px}.day-head{padding:17px}.event{grid-template-columns:92px 19px minmax(0,1fr)}.events{padding:12px 15px}.hero-main{padding-left:42px}}
+@media(max-width:1040px){.page{width:min(900px,calc(100% - 38px))}.timeline-layout{grid-template-columns:145px minmax(0,1fr)}.right-rail{grid-column:2;position:static;display:grid;grid-template-columns:1fr 1fr;align-items:start}.right-rail .aside-card:last-child,.right-rail .notice{grid-column:1/-1}.hero-pattern{width:55%}.hero-card{min-height:375px}.hero-main{max-width:650px}.overview{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:690px){.page{width:calc(100% - 26px)}.topbar{height:63px}.topbar-inner{gap:8px}.toplinks{display:none}.brand{font-size:12px;letter-spacing:.12em}.brand-mark{width:28px;height:28px;font-size:16px}.mini-btn{padding:8px 10px}.mini-btn .btntext{display:none}.hero{padding-top:12px}.hero-card{border-radius:20px;min-height:0}.hero-main{padding:36px 26px 30px;max-width:100%}.hero h1{font-size:clamp(39px,11vw,61px);margin-top:14px}.hero-desc{max-width:340px;font-size:12px}.hero-glow{opacity:.6}.hero-pattern{right:-60px;width:70%;opacity:.27}.hero-footer{margin-top:32px;gap:8px 5px}.route-stop{font-size:10px;gap:5px}.route-stroke{width:13px}.route-stop span.city-small{display:none}.hero-bottom{padding:15px 12px;grid-template-columns:repeat(4,1fr)}.hero-stat{padding:0 7px}.hero-stat strong{font-size:21px;display:block}.hero-stat span{font-size:9px}.section-block{margin-top:30px}.section-heading{align-items:start;margin-bottom:15px}.section-heading h2{font-size:28px}.section-heading p{font-size:10px}.overview{gap:9px}.city-art{height:88px}.city-meta{padding:13px!important}.city-meta h3{font-size:20px}.city-meta p{font-size:11px}.info-strip{grid-template-columns:1fr}.timeline-header{top:63px;padding-top:9px}.timeline-heading{align-items:center}.timeline-layout{display:flex;flex-direction:column;gap:0}.day-index{position:static;display:flex;overflow-x:auto;max-width:100%;padding:0 0 11px;margin-bottom:10px;gap:6px;scrollbar-width:none}.day-index::-webkit-scrollbar{display:none}.day-index-caption,.index-split{display:none}.day-link{min-width:92px;max-width:92px;background:#fff;border:1px solid #dfe7e3;margin:0;display:block;text-align:center;padding:7px 6px}.day-link .n{display:inline-block;width:auto;font-size:10px;margin-right:3px}.day-link .d{display:inline-block;font-size:11px}.day-link small{font-size:9px;max-width:76px;margin:auto}.days{width:100%}.day-panel{scroll-margin-top:175px;border-radius:15px;margin-bottom:11px}.day-head{gap:10px;padding:14px}.day-number{min-width:45px;width:45px;height:50px}.day-number strong{font-size:18px}.day-top h3{font-size:15px}.day-small{font-size:9px;gap:5px}.events{padding:13px 12px 13px 11px}.event{grid-template-columns:80px 18px minmax(0,1fr);gap:8px;min-height:80px}.event-time{font-size:10px}.event-title{font-size:12px}.event-desc{font-size:11px}.event-note{font-size:9px}.event-detail{padding-bottom:15px}.overnight{padding:10px 14px}.right-rail{width:100%;display:block}.right-rail .aside-card,.right-rail .notice{margin-bottom:10px}.section-footer{padding:30px 0 55px}.filterbar{padding-bottom:8px}.filter{padding:8px 12px;font-size:11px}}
+@media print{body{background:#fff;font-size:11px}.topbar,.actions,.timeline-header .filterbar,.day-index,.right-rail,.section-heading p,.collapse,.hero-pattern,.hero-glow,.info-strip{display:none!important}.page{width:100%;max-width:none;padding:0 18px}.hero-card{min-height:0;border-radius:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}.hero-main{padding:24px}.hero h1{font-size:44px}.hero-footer{margin:12px 0}.hero-bottom{padding:8px}.overview{display:none}.section-block{margin-top:22px}.timeline-header{position:static;padding:0}.timeline-layout{display:block}.day-panel{box-shadow:none;page-break-inside:avoid;break-inside:avoid;margin:10px 0;border:1px solid #dce3e0}.day-panel.hidden{display:block!important}.day-panel.collapsed .events,.day-panel.collapsed .overnight{display:block!important}.day-head{padding:10px 15px}.events{padding:8px 15px}.event{min-height:auto;grid-template-columns:100px 15px 1fr}.event-detail{padding-bottom:6px}.event-desc{font-size:10px}.overnight{padding:5px 15px}.section-footer{display:none}.print-only{display:block}}
 
-  /* HERO */
-  .hero{
-    position:relative;
-    padding: 80px 24px 60px;
-    text-align:center;
-    overflow:hidden;
-    background:
-      radial-gradient(ellipse at 30% 0%, rgba(111,227,196,0.14), transparent 55%),
-      radial-gradient(ellipse at 75% 15%, rgba(155,217,127,0.10), transparent 50%),
-      linear-gradient(180deg, rgba(14,24,48,0.88), rgba(14,24,48,0.96) 70%, var(--midnight-deep) 100%),
-      url('https://commons.wikimedia.org/wiki/Special:FilePath/Aurora_borealis_above_Lyngenfjorden,_2012_March.jpg?width=1600') center 60% / cover no-repeat;
-    border-bottom: 1px solid var(--line);
-  }
-  .hero .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    font-size: 12px;
-    color: var(--birch-dim);
-    margin-bottom: 18px;
-  }
-  .hero h1{
-    font-family:'Fraunces', serif;
-    font-weight: 500;
-    font-size: clamp(36px, 6vw, 64px);
-    line-height: 1.05;
-    margin: 0 0 18px;
-    letter-spacing: -0.01em;
-  }
-  .hero h1 .grad{
-    background: linear-gradient(90deg, var(--aurora-a), var(--aurora-b));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .hero p.sub{
-    font-size: 16px;
-    color: var(--birch-dim);
-    max-width: 520px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  .route-chain{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 32px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--birch-dim);
-  }
-  .route-chain .city{
-    padding: 5px 12px;
-    border: 1px solid var(--line);
-    border-radius: 100px;
-  }
-  .route-chain .arrow{ opacity: 0.4; }
+/* Day-by-day first: compact timeline-only layout */
+html{scroll-padding-top:145px}
+#timeline.section-block{margin-top:0}
+.timeline-header{top:0;padding-top:16px}
+.timeline-tools{display:flex;align-items:center;gap:16px;justify-content:flex-end}
+.timeline-tools #countText{white-space:nowrap}
+.day-index{top:151px;max-height:calc(100vh - 170px)}
+.right-rail{top:151px}
+.day-panel{scroll-margin-top:162px}
+@media(max-width:690px){
+ html{scroll-padding-top:120px}
+ .timeline-header{top:0;padding-top:9px}
+ .timeline-tools{gap:7px}
+ .timeline-tools #countText{font-size:10px}
+ .timeline-tools .actions{gap:5px}
+ .timeline-tools .mini-btn{padding:8px}
+ .timeline-tools .mini-btn .btntext{display:none}
+ .day-panel{scroll-margin-top:135px}
+}
+@media print{#timeline.section-block{margin-top:0}.timeline-tools{display:none!important}}
 
-  /* TAB BAR (bottom nav) */
-  .tab-bar{
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 20;
-    display:flex;
-    justify-content:center;
-    gap: 4px;
-    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
-    background: rgba(14,24,48,0.92);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid var(--line);
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
-  }
-  .tab-btn{
-    flex: 1;
-    max-width: 140px;
-    display:flex;
-    flex-direction: column;
-    align-items:center;
-    justify-content:center;
-    gap: 3px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--birch-dim);
-    background: transparent;
-    border: 1px solid transparent;
-    padding: 8px 6px;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .tab-btn .icon{ font-size: 18px; line-height: 1; }
-  .tab-btn:hover{ color: var(--birch); }
-  .tab-btn.active{
-    color: var(--midnight-deep);
-    background: linear-gradient(90deg, var(--aurora-a), var(--aurora-b));
-    border-color: transparent;
-    font-weight: 600;
-  }
-  .tab-panel{ display:none; }
-  .tab-panel.active{ display:block; }
+/* Non-sticky timeline: header, day navigation and sidebar scroll naturally. */
+html{scroll-padding-top:12px}
+.timeline-header,.day-index,.right-rail{position:static;top:auto}
+.day-index{max-height:none;overflow:visible}
+.day-panel{scroll-margin-top:12px}
+@media(max-width:690px){html{scroll-padding-top:12px}.day-index{overflow-x:auto;max-width:100%}.day-panel{scroll-margin-top:12px}}
 
-  /* MAP */
-  .map-section{ padding: 48px 24px 0; }
-  #map{
-    height: 420px;
-    width: 100%;
-    border-radius: 14px;
-    border: 1px solid var(--line);
-    filter: saturate(0.85);
-  }
-  @media (max-width: 560px){
-    #map{ height: 280px; }
-  }
-  .leaflet-container{ background: #142238 !important; font-family:'IBM Plex Sans', sans-serif; }
+/* ─── Main views: no frozen/sticky header ───────────────────────────── */
+.page{padding-top:18px}
+.app-tabs{display:flex;align-items:stretch;gap:8px;padding:5px;background:#e9efeb;border:1px solid #dbe5df;border-radius:16px;width:max-content;max-width:100%;margin:0 0 20px;position:static;top:auto;z-index:auto;box-shadow:none}
+.app-tab{background:transparent;color:#718580;border:0;border-radius:12px;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:13px;font-weight:800;white-space:nowrap;min-width:150px;transition:background .15s,color .15s,box-shadow .15s}
+.app-tab:hover{color:var(--forest);background:#f4f7f3}.app-tab[aria-selected=true]{color:#1e4d4b;background:#fff;box-shadow:0 3px 12px rgba(35,69,61,.10)}
+.tab-n{font-size:10px;font-weight:850;letter-spacing:.07em;opacity:.56}
+.tab-count{background:#eaf0e9;color:#496b61;padding:1px 8px;border-radius:99px;font-size:10px}.app-tab[aria-selected=true] .tab-count{background:#dce9df}
+.tab-panel:not(.is-active){display:none!important}.tab-panel.is-active{display:block!important}.visually-hidden-anchor{display:block;height:0;overflow:hidden}
+#panel-timeline.section-block{margin-top:0}.timeline-layout{grid-template-columns:170px minmax(0,1fr);width:min(1150px,100%);gap:24px}.days{width:100%}.day-index{position:static!important;top:auto!important;max-height:none!important;overflow:visible!important}
+.timeline-header{position:static!important;top:auto!important;background:none!important;padding-top:0}.day-panel{scroll-margin-top:16px}
+.panel-heading{margin:14px 0 27px}.panel-heading h2{font:400 clamp(32px,4vw,44px)/1.08 Georgia,'Times New Roman',serif;letter-spacing:-.04em;margin:8px 0 8px;color:#193d3d}.panel-heading p{color:#768987;font-size:13px;margin:0}
+.reservations-panel,.budget-panel{width:min(1100px,100%);padding-bottom:30px}.reservations-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:34px}.res-stat{background:#fff;border:1px solid #e1e8e4;border-radius:16px;padding:19px 22px;display:flex;flex-direction:column;min-height:136px}.res-stat>span{font-size:11px;color:#738784;font-weight:800}.res-stat strong{font:400 42px Georgia,serif;color:#254e4e;line-height:1.2;margin:6px 0}.res-stat small{font-size:11px;color:#93a39e;margin-top:auto}
+.reservation-section-header{display:flex;align-items:center;justify-content:space-between;margin:0 0 12px}.reservation-section-header>div{display:flex;align-items:center;gap:10px}.reservation-section-header h3{margin:0;font-size:17px}.reservation-section-header>span{font-size:11px;color:#8b9c98}.group-dot{height:9px;width:9px;border-radius:50%}.group-dot.green{background:#449877}.group-dot.amber{background:#d8a45d}.reservation-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;margin-bottom:30px}.reservation-item{display:flex;align-items:center;gap:15px;background:#fff;border:1px solid #e2e9e5;border-radius:15px;min-height:93px;padding:16px 17px}.reservation-icon{width:36px;height:36px;flex-shrink:0;display:grid;place-items:center;border-radius:11px;font-size:18px;font-weight:800}.reservation-icon.confirmed{background:#e5f3ea;color:#27805e}.reservation-icon.waiting{background:#fff2dd;color:#b78343}.reservation-main{min-width:0;flex:1}.reservation-title{font-size:13px;font-weight:800;line-height:1.3}.reservation-date{font-size:11px;color:#8b9e98;margin-top:5px}.res-pill{font-size:10px;font-weight:800;border-radius:100px;white-space:nowrap;padding:6px 10px}.res-pill-ok{background:#e3f4e9;color:#247a53}.res-pill-pending{background:#fff1dc;color:#a47438}.reservation-reminder{border:1px solid #e8ddc7;border-radius:16px;background:#faf6ee;padding:20px 23px;color:#675c47}.reservation-reminder strong{font-size:13px}.reservation-reminder p{margin:7px 0 0;font-size:12px;line-height:1.8}.reservation-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.reservation-links a{font-size:11px;font-weight:800;padding:10px 14px;border:1px solid #dde8e1;border-radius:9px;background:#fff;color:#2c6961}.reservation-links a:hover{background:#eef4f0}
+.budget-hero{background:#184749;color:#f2f8f0;border-radius:23px;padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;position:relative;overflow:hidden}.budget-hero:before{content:'';position:absolute;right:-170px;top:-220px;width:550px;height:550px;border-radius:50%;background:radial-gradient(ellipse,rgba(106,174,159,.20),transparent 65%);pointer-events:none}.budget-left{position:relative;z-index:1}.budget-kicker{font-size:11px;font-weight:850;letter-spacing:.12em;color:#aed1c8}.budget-total{font:400 clamp(39px,5.5vw,66px)/1.25 Georgia,serif;letter-spacing:-.045em;margin:6px 0}.budget-per{font-size:13px;color:#d2e5db}.budget-per b{color:#fff}.budget-hero-note{margin-top:22px;max-width:590px;font-size:11px;color:#b0cec4;line-height:1.8}.budget-figure{position:relative;z-index:1;min-width:140px;text-align:center}.budget-figure-icon{display:grid;place-items:center;width:115px;height:115px;border:1px solid rgba(241,249,239,.18);border-radius:50%;font:400 62px Georgia,serif;color:#dbefd9;margin:0 auto 10px;background:rgba(255,255,255,.055)}.budget-figure-caption{font-size:11px;font-weight:800}.budget-figure-sub{font-size:10px;color:#b1cdc3}
+.fx-panel{background:#fff;border:1px solid #e1e8e4;border-radius:16px;margin-top:17px;padding:19px 23px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px 25px}.fx-title{font-weight:800;font-size:13px;color:#2a5050}.fx-help{font-size:11px;color:#90a09d;margin-top:3px}.fx-input-wrap{display:flex;align-items:center;gap:11px;font-size:12px;font-weight:800;color:#536e68}.fx-input-wrap input{font:800 18px/1.3 Inter,-apple-system,sans-serif;width:112px;color:#174848;background:#f5f9f5;border:1px solid #cbdcd2;border-radius:10px;padding:10px 12px;text-align:right;outline-offset:3px}.fx-source{grid-column:1/-1;color:#899a94;font-size:10px;margin:4px 0 0}.fx-source a{text-decoration:underline;color:#3c7c77}.fx-error{grid-column:1/-1;color:#bb423b;font-size:11px;margin:0}
+.budget-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:17px 0 30px}.budget-metric{border-radius:16px;border:1px solid #e2e9e5;background:#fff;display:flex;flex-direction:column;padding:20px 22px;min-height:127px}.budget-metric span{font-size:11px;font-weight:800;color:#788e87}.budget-metric strong{font:400 clamp(23px,2.4vw,31px) Georgia,serif;color:#214c4a;margin:8px 0 4px}.budget-metric strong i{font:normal 12px Inter,sans-serif}.budget-metric small{color:#96a49f;font-size:10px}
+.budget-detail{border:1px solid #e1e8e4;border-radius:19px;background:#fff;padding:25px 28px}.budget-detail-head{display:flex;justify-content:space-between;align-items:end;gap:12px;border-bottom:1px solid #e9efeb;padding-bottom:18px;margin-bottom:7px}.budget-detail-head h3{font-size:18px;margin:5px 0 0}.budget-detail-note{font-size:11px;color:#82968e}.budget-row{padding:19px 0 17px;border-bottom:1px solid #edf2ee}.budget-row:last-of-type{border:0}.budget-row-top{display:flex;align-items:center;justify-content:space-between;gap:14px}.budget-row-label{display:flex;gap:12px;align-items:center;min-width:0}.budget-dot{height:12px;width:12px;flex-shrink:0;border-radius:4px}.dot-norse,.fill-norse{background:#396d68}.dot-airbnb,.fill-airbnb{background:#d6ad79}.dot-sas,.fill-sas{background:#8eb3a2}.budget-row-label strong{display:block;font-size:13px;color:#304947}.budget-row-label small{display:block;color:#94a39c;font-size:11px;margin-top:4px}.budget-row-values{text-align:right;min-width:176px}.budget-row-values strong{font-size:16px;display:block;color:#254b49;font-weight:850}.budget-row-values small{font-size:10px;color:#8d9f98;white-space:normal}.bar-track{height:6px;border-radius:9px;background:#e9eeea;overflow:hidden;margin-top:12px}.bar-fill{height:100%;border-radius:9px;transition:width .24s ease}.budget-totals{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:22px;font-size:13px;font-weight:850;color:#295651}.budget-totals strong{font-size:23px}.budget-remaining{border:1px solid #e6ddc7;background:#faf7f0;border-radius:16px;margin-top:18px;padding:20px 23px;display:flex;gap:20px;justify-content:space-between;align-items:start}.budget-remaining strong{font-size:13px;color:#5a6357}.budget-remaining p{color:#7c8176;font-size:11px;line-height:1.8;margin:6px 0 0}.budget-footnote{font-size:11px;line-height:1.8;color:#8a9893;padding:17px 3px}
+@media(max-width:1040px){.timeline-layout{grid-template-columns:150px minmax(0,1fr)}.reservations-stats,.budget-metrics{gap:10px}}
+@media(max-width:690px){.page{padding-top:12px}.app-tabs{width:100%;gap:3px;margin-bottom:15px;padding:4px;border-radius:13px}.app-tab{min-width:0;flex:1;padding:11px 5px;font-size:11px;gap:4px;border-radius:10px}.tab-n{display:none}.tab-count{padding:1px 5px;font-size:9px}.timeline-layout{display:flex;flex-direction:column;gap:0}.reservations-stats,.budget-metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.res-stat,.budget-metric{padding:13px 10px;min-height:110px}.res-stat strong{font-size:31px}.res-stat span,.budget-metric span{font-size:10px}.res-stat small,.budget-metric small{font-size:9px}.budget-metric strong{font-size:19px}.panel-heading{margin:10px 0 20px}.panel-heading h2{font-size:33px}.panel-heading p{font-size:11px}.reservation-list{grid-template-columns:1fr;gap:8px;margin-bottom:25px}.reservation-item{min-height:78px;padding:14px}.reservation-title{font-size:12px}.reservation-date{font-size:10px}.budget-hero{padding:26px 22px;display:block;border-radius:18px}.budget-figure{display:none}.budget-total{font-size:clamp(36px,11vw,53px)}.budget-hero-note{font-size:10px;margin-top:15px}.fx-panel{padding:16px;grid-template-columns:1fr;gap:12px}.fx-input-wrap{width:100%}.fx-input-wrap input{width:122px}.fx-source{grid-column:1}.budget-detail{padding:20px 16px}.budget-row-top{align-items:start}.budget-row-values{min-width:115px}.budget-row-values strong{font-size:14px}.budget-row-values small{font-size:9px}.budget-row-label strong{font-size:11px}.budget-row-label small{font-size:9px}.budget-remaining{display:block;padding:17px}.budget-remaining .res-pill{display:inline-flex;margin-top:11px}.budget-detail-head h3{font-size:15px}}
+@media print{.app-tabs{display:none!important}.tab-panel:not(.is-active){display:none!important}.tab-panel.is-active{display:block!important}.reservations-panel,.budget-panel{width:100%}.timeline-layout{display:block}.timeline-header .filterbar{display:none}.budget-hero,.budget-detail,.reservation-item{-webkit-print-color-adjust:exact;print-color-adjust:exact}.app-tab{display:none!important}}
 
-  /* SECTION HEADS */
-  .section-title{
-    font-family:'IBM Plex Mono', monospace;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-size: 12px;
-    color: var(--birch-dim);
-    margin: 64px 0 24px;
-    display:flex;
-    align-items:center;
-    gap: 12px;
-  }
-  .section-title::after{
-    content:"";
-    flex:1;
-    height:1px;
-    background: var(--line);
-  }
-
-  /* TIMELINE */
-  .timeline{ position: relative; padding-left: 28px; }
-  .timeline::before{
-    content:"";
-    position:absolute;
-    left: 7px; top: 6px; bottom: 6px;
-    width: 2px;
-    background: linear-gradient(180deg, var(--aurora-a), var(--norway) 40%, var(--denmark) 75%, var(--aurora-b));
-    opacity: 0.5;
-  }
-  .leg{ margin-bottom: 44px; }
-  .leg-head{
-    display:flex;
-    align-items:baseline;
-    gap: 12px;
-    margin-bottom: 14px;
-    position: relative;
-  }
-  .leg-head::before{
-    content:"";
-    position:absolute;
-    left: -28px;
-    top: 6px;
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: var(--dot, var(--aurora-a));
-    box-shadow: 0 0 0 4px var(--midnight), 0 0 12px var(--dot, var(--aurora-a));
-  }
-  .leg-city{
-    font-family:'Fraunces', serif;
-    font-size: 26px;
-    font-weight: 500;
-  }
-  .leg-flag{ font-size: 20px; }
-  .leg-dates{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--birch-dim);
-  }
-  .leg-image{
-    height: 200px;
-    border-radius: 12px;
-    background-size: cover;
-    background-position: center;
-    border: 1px solid var(--line);
-    margin: 0 0 20px;
-    filter: saturate(0.9);
-  }
-  .day-image{
-    height: 140px;
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    border: 1px solid var(--line);
-    margin: 0 0 14px;
-    filter: saturate(0.9);
-  }
-  @media (max-width: 560px){
-    .leg-image{ height: 150px; }
-    .day-image{ height: 110px; }
-  }
-
-  .day{
-    border-bottom: 1px solid var(--line);
-  }
-  .day:last-child{ border-bottom: none; }
-  .day > summary{
-    display:grid;
-    grid-template-columns: 78px 1fr 20px;
-    gap: 16px;
-    padding: 16px 0;
-    align-items: center;
-    cursor: pointer;
-    list-style: none;
-  }
-  .day > summary::-webkit-details-marker{ display:none; }
-  .day > summary::marker{ content:""; }
-  .day .date{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--dot, var(--aurora-a));
-    font-weight: 500;
-  }
-  .day .plan{ font-size: 14.5px; line-height: 1.5; }
-  .day .sleep{
-    display:block;
-    margin-top: 3px;
-    font-size: 12px;
-    color: var(--birch-dim);
-  }
-  .day .chevron{
-    color: var(--birch-dim);
-    transition: transform 0.2s ease;
-    justify-self: end;
-  }
-  .day[open] .chevron{ transform: rotate(180deg); }
-  .day-detail{
-    padding: 0 0 20px 94px;
-  }
-  .day-detail ul{ margin:0; padding-left: 16px; }
-  .day-detail li{
-    font-size: 13.5px;
-    line-height: 1.6;
-    color: var(--birch-dim);
-    margin-bottom: 6px;
-  }
-  .day-detail li b{ color: var(--birch); font-weight: 500; }
-  @media (max-width: 560px){
-    .day-detail{ padding-left: 0; }
-  }
-
-  /* BOOKING */
-  .booking-group-title{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--birch-dim);
-    margin: 36px 0 4px;
-  }
-  .booking-group-title:first-of-type{ margin-top: 0; }
-  .booking-list{ display: flex; flex-direction: column; }
-  .booking-row{
-    display: grid;
-    grid-template-columns: 4px 1fr auto;
-    gap: 20px;
-    align-items: start;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .booking-row:last-child{ border-bottom: none; }
-  .booking-row .dot{
-    align-self: stretch;
-    width: 4px;
-    border-radius: 2px;
-    background: var(--dot, var(--aurora-a));
-  }
-  .booking-row .city{
-    font-family:'Fraunces', serif;
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 4px;
-  }
-  .booking-row .nights{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--dot, var(--aurora-a));
-    margin-bottom: 14px;
-  }
-  .booking-row .fields{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 28px;
-  }
-  .booking-row .field{
-    display:flex;
-    gap: 6px;
-    font-size: 13.5px;
-    color: var(--birch-dim);
-  }
-  .booking-row .field span::after{ content: ":"; }
-  .booking-row .field b{ color: var(--birch); font-weight: 500; }
-  .booking-row .status{
-    justify-self: end;
-    white-space: nowrap;
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--birch-dim);
-    padding-top: 2px;
-  }
-  @media (max-width: 640px){
-    .booking-row{ grid-template-columns: 4px 1fr; }
-    .booking-row .status{ grid-column: 2; justify-self: start; padding-top: 8px; }
-  }
-
-  /* BUDGET */
-  .budget-table-wrap{
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .budget-table{
-    width: 100%;
-    min-width: 480px;
-    border-collapse: collapse;
-  }
-  .budget-table th{
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--birch-dim);
-    text-align: left;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .budget-table th:last-child, .budget-table td:last-child{ text-align: right; }
-  .budget-table td{
-    padding: 13px 0;
-    font-size: 14px;
-    border-bottom: 1px solid var(--line);
-  }
-  .budget-table td.cat{ font-weight: 500; }
-  .budget-table td.note{ color: var(--birch-dim); font-size: 12.5px; }
-  .budget-table tr:last-child td{ border-bottom: none; }
-  .budget-table tr.total td{
-    font-family:'IBM Plex Mono', monospace;
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--aurora-a);
-    border-top: 2px solid var(--line);
-    padding-top: 16px;
-  }
-  .budget-caption{
-    font-size: 12.5px;
-    color: var(--birch-dim);
-    margin-top: 14px;
-    line-height: 1.6;
-  }
-  @media (max-width: 560px){
-    .budget-table{ min-width: 0; }
-    .budget-table thead{ display: none; }
-    .budget-table tbody, .budget-table tr{ display: block; }
-    .budget-table tr{
-      display: grid;
-      grid-template-columns: 1fr auto;
-      column-gap: 12px;
-      row-gap: 3px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .budget-table td{ display: block; padding: 0; border-bottom: none; grid-column: 1; }
-    .budget-table td.note{ grid-column: 1 / -1; }
-    .budget-table td:last-child{ grid-column: 2; grid-row: 1; text-align: right; }
-    .budget-table tr.total{ padding-top: 16px; border-top: 2px solid var(--line); }
-    .budget-table tr.total td{ padding-top: 0; border-top: none; }
-  }
-
-  /* NOTES */
-  .notes{
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 28px 26px;
-  }
-  .notes h3{
-    font-family:'Fraunces', serif;
-    font-weight: 500;
-    font-size: 20px;
-    margin: 0 0 16px;
-  }
-  .notes ul{ margin:0; padding-left: 18px; }
-  .notes li{ margin-bottom: 12px; line-height: 1.6; font-size: 14.5px; color: var(--birch); }
-  .notes li b{ color: var(--aurora-a); font-weight: 600; }
-
-  footer{
-    text-align:center;
-    padding: 40px 24px 0;
-    color: var(--birch-dim);
-    font-family:'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-  }
-
-  @media (max-width: 560px){
-    .day > summary{ grid-template-columns: 56px 1fr 16px; gap: 10px; padding: 14px 0; }
-    .leg-city{ font-size: 22px; }
-    .hero{ padding: 56px 20px 44px; }
-    .wrap{ padding: 0 16px 80px; }
-    .map-section{ padding: 32px 16px 0; }
-    .notes{ padding: 20px 18px; }
-  }
+/* On mobile, the day picker must scroll inside the page, not widen the document. */
+@media(max-width:690px){.day-index{overflow-x:auto!important;overflow-y:hidden!important;width:100%!important;max-width:100%!important;flex-shrink:0}.timeline-layout,.days{min-width:0;max-width:100%}}
 </style>
 </head>
 <body>
-
-<div class="hero">
-  <div class="eyebrow">Bangkok → Nordic Loop → Bangkok</div>
-  <h1>16 Days Across <span class="grad">Scandinavia</span></h1>
-  <p class="sub">Fjords, a scenic train, and an overnight cruise — Bergen to Oslo to Copenhagen to Stockholm, April 3–18.</p>
-  <div class="route-chain">
-    <span class="city">Bergen</span><span class="arrow">→</span>
-    <span class="city">Flåm</span><span class="arrow">→</span>
-    <span class="city">Oslo</span><span class="arrow">→</span>
-    <span class="city">Copenhagen</span><span class="arrow">→</span>
-    <span class="city">Stockholm</span>
-  </div>
-</div>
-
-<nav class="tab-bar">
-  <button class="tab-btn active" data-tab="itinerary"><span class="icon">🗺️</span>Itinerary</button>
-  <button class="tab-btn" data-tab="booking"><span class="icon">🧾</span>Booking List</button>
-  <button class="tab-btn" data-tab="budget"><span class="icon">💰</span>Budget</button>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="i-plane" viewbox="0 0 24 24"><path d="M22 2 9.7 14.3M22 2l-7.8 20-4.5-8.5L1 9 22 2Z"></path></symbol>
+<symbol id="i-train" viewbox="0 0 24 24"><rect height="17" rx="4" width="14" x="5" y="2"></rect><path d="M8 6h8M5 12h14M8 22l3-3M16 22l-3-3M8 15h.1M16 15h.1"></path></symbol>
+<symbol id="i-ship" viewbox="0 0 24 24"><path d="M3 18l9 3 9-3M4 15l2-7h12l2 7-8 4-8-4ZM12 3v5M8 3h8"></path></symbol>
+<symbol id="i-visit" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m15 9-2 5-5 2 2-5 5-2Z"></path></symbol>
+<symbol id="i-food" viewbox="0 0 24 24"><path d="M4 3v8M7 3v8M10 3v8M7 11v10M18 3c-4 2-4 9 0 10v8"></path></symbol>
+<symbol id="i-stay" viewbox="0 0 24 24"><path d="M3 20V4h18v16M7 20v-8h10v8M9 8h.01M15 8h.01M2 20h20"></path></symbol>
+<symbol id="i-transfer" viewbox="0 0 24 24"><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"></path></symbol>
+<symbol id="i-down" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></symbol>
+<symbol id="i-printer" viewbox="0 0 24 24"><path d="M6 9V3h12v6M6 18H3V9h18v9h-3M6 14h12v7H6v-7ZM7 12h.01"></path></symbol>
+<symbol id="i-link" viewbox="0 0 24 24"><path d="M14 4h6v6M20 4 10 14M20 13v7H4V4h7"></path></symbol>
+<symbol id="i-calendar" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4M17 3v4M3 10h18"></path></symbol>
+</svg>
+<main class="page" id="top"><nav aria-label="ส่วนของแผนเดินทาง" class="app-tabs" role="tablist">
+<button aria-controls="panel-timeline" aria-selected="true" class="app-tab is-active" data-tab="timeline" id="tab-timeline" role="tab" tabindex="0" type="button"><span class="tab-n">01</span> Day by Day</button>
+<button aria-controls="panel-reservations" aria-selected="false" class="app-tab" data-tab="reservations" id="tab-reservations" role="tab" tabindex="-1" type="button"><span class="tab-n">02</span> Reservations <span class="tab-count">9</span></button>
+<button aria-controls="panel-budget" aria-selected="false" class="app-tab" data-tab="budget" id="tab-budget" role="tab" tabindex="-1" type="button"><span class="tab-n">03</span> Budget</button>
 </nav>
-
-<div id="panel-itinerary" class="tab-panel active">
-
-<div class="map-section wrap">
-  <div id="map"></div>
+<section aria-labelledby="tab-timeline" class="section-block tab-panel is-active" id="panel-timeline" role="tabpanel" tabindex="0"><span class="visually-hidden-anchor" id="timeline"></span><div class="timeline-header"><div class="section-label">DAY BY DAY</div><div class="timeline-heading"><h2>Daily timeline</h2><div class="timeline-tools"><p aria-live="polite" id="countText">แสดง 15 วัน</p><div class="actions"><a class="mini-btn" href="https://docs.google.com/spreadsheets/d/1SZ5dGtLfjQTjlXsYfsEuFj_utD-qphuQI8ybvTlteJg/edit" rel="noopener" target="_blank"><svg class="icon"><use href="#i-link"></use></svg><span class="btntext">Google Sheet</span></a><button aria-label="พิมพ์หรือบันทึกเป็น PDF" class="mini-btn" id="printBtn"><svg class="icon"><use href="#i-printer"></use></svg><span class="btntext">พิมพ์ / PDF</span></button></div></div></div><div aria-label="เลือกกลุ่มวัน" class="filterbar" role="toolbar"><button aria-pressed="true" class="filter" data-filter="all">ทั้งหมด · 15 วัน</button><button aria-pressed="false" class="filter" data-filter="no">Norway</button><button aria-pressed="false" class="filter" data-filter="sea">เรือนอน</button><button aria-pressed="false" class="filter" data-filter="dk">Denmark</button><button aria-pressed="false" class="filter" data-filter="se">Sweden</button><button aria-pressed="false" class="filter" data-filter="transport">วันเดินทาง</button></div></div>
+<div class="timeline-layout"><nav aria-label="เลือกวัน" class="day-index" id="dayIndex"><div class="day-index-caption">SELECT A DAY</div></nav><div class="days" id="days"></div></div></section><section aria-labelledby="tab-reservations" class="tab-panel reservations-panel" hidden="" id="panel-reservations" role="tabpanel" tabindex="0">
+<div class="panel-heading"><div class="section-label">YOUR BOOKINGS</div><h2>Reservations</h2><p>รายการที่จองแล้วและยังต้องดำเนินการ สำหรับผู้เดินทาง 7 คน</p></div>
+<div class="reservations-stats"><div class="res-stat"><span>การจองทั้งหมด</span><strong>9</strong><small>รายการหลักในแผน</small></div><div class="res-stat"><span>ยืนยันแล้ว</span><strong>3</strong><small>เที่ยวบิน 2 รายการ · ที่พัก 1 รายการ</small></div><div class="res-stat"><span>ต้องจองเพิ่ม</span><strong>6</strong><small>โรงแรม · รถไฟ · เรือ</small></div></div>
+<div class="reservation-section-header"><div><span class="group-dot green"></span><h3>Confirmed</h3></div><span>3 รายการ</span></div>
+<div class="reservation-list"><article class="reservation-item"><div class="reservation-icon confirmed">✓</div><div class="reservation-main"><div class="reservation-title">Norse BKK ↔ ARN</div><div class="reservation-date">2 เม.ย. / 16 เม.ย.</div></div><span class="res-pill res-pill-ok">ยืนยันแล้ว</span></article><article class="reservation-item"><div class="reservation-icon confirmed">✓</div><div class="reservation-main"><div class="reservation-title">SAS ARN → Bergen</div><div class="reservation-date">2 เม.ย. • 2 เที่ยวบิน</div></div><span class="res-pill res-pill-ok">ยืนยันแล้ว</span></article><article class="reservation-item"><div class="reservation-icon confirmed">✓</div><div class="reservation-main"><div class="reservation-title">Airbnb Bergen</div><div class="reservation-date">2–6 เม.ย. • 4 คืน</div></div><span class="res-pill res-pill-ok">ยืนยันแล้ว</span></article></div>
+<div class="reservation-section-header"><div><span class="group-dot amber"></span><h3>To book</h3></div><span>6 รายการ</span></div>
+<div class="reservation-list"><article class="reservation-item"><div class="reservation-icon waiting">○</div><div class="reservation-main"><div class="reservation-title">Vy Bergen → Oslo</div><div class="reservation-date">6 เม.ย.</div></div><span class="res-pill res-pill-pending">ยังไม่จอง</span></article><article class="reservation-item"><div class="reservation-icon waiting">○</div><div class="reservation-main"><div class="reservation-title">Oslo hotel</div><div class="reservation-date">6–8 เม.ย. • 2 คืน</div></div><span class="res-pill res-pill-pending">ยังไม่จอง</span></article><article class="reservation-item"><div class="reservation-icon waiting">○</div><div class="reservation-main"><div class="reservation-title">Go Nordic Ferry</div><div class="reservation-date">8–9 เม.ย. • 1 คืน</div></div><span class="res-pill res-pill-pending">ยังไม่จอง</span></article><article class="reservation-item"><div class="reservation-icon waiting">○</div><div class="reservation-main"><div class="reservation-title">Copenhagen hotel</div><div class="reservation-date">9–12 เม.ย. • 3 คืน</div></div><span class="res-pill res-pill-pending">ยังไม่จอง</span></article><article class="reservation-item"><div class="reservation-icon waiting">○</div><div class="reservation-main"><div class="reservation-title">Rail CPH → Stockholm</div><div class="reservation-date">12 เม.ย.</div></div><span class="res-pill res-pill-pending">ยังไม่จอง</span></article><article class="reservation-item"><div class="reservation-icon waiting">○</div><div class="reservation-main"><div class="reservation-title">Stockholm hotel</div><div class="reservation-date">12–16 เม.ย. • 4 คืน</div></div><span class="res-pill res-pill-pending">ยังไม่จอง</span></article></div>
+<div class="reservation-reminder"><strong>ก่อนจองเพิ่ม</strong><p>เรือ Oslo → Copenhagen คืน 8–9 เม.ย. ยังไม่จอง ควรเช็กห้องสำหรับ 7 คน (อาจต้อง 2 ห้องแบบ 4+3) และยืนยันตารางเดินเรือจริงก่อนชำระเงิน ส่วน Bergen Airbnb จองแล้ว แต่ต้องขอวิธีเช็กอินดึกจากเจ้าของที่พัก</p></div>
+<div class="reservation-links"><a href="https://docs.google.com/spreadsheets/d/1SZ5dGtLfjQTjlXsYfsEuFj_utD-qphuQI8ybvTlteJg/edit" rel="noopener noreferrer" target="_blank">Google Sheets ↗</a><a href="https://www.vy.no/en" rel="noopener noreferrer" target="_blank">Vy railway ↗</a><a href="https://www.gonordiccruiseline.com/" rel="noopener noreferrer" target="_blank">Go Nordic ↗</a><a href="https://www.sj.se/en" rel="noopener noreferrer" target="_blank">SJ trains ↗</a></div>
+</section><section aria-labelledby="tab-budget" class="tab-panel budget-panel" hidden="" id="panel-budget" role="tabpanel" tabindex="0">
+<div class="panel-heading"><div class="section-label">FINANCIAL OVERVIEW</div><h2>Budget</h2><p>ยอดที่จองและยืนยันแล้ว · รวมทั้ง 7 คน · แปลงเป็นเงินบาทเพื่อเปรียบเทียบ</p></div>
+<div class="budget-hero"><div class="budget-left"><div class="budget-kicker">CONFIRMED SPEND · TOTAL IN THB</div><div aria-live="polite" class="budget-total" id="budgetTotal">฿249,670.85</div><div class="budget-per">เฉลี่ย <b id="budgetPerPerson">฿35,667.26</b> / คน · ผู้เดินทาง 7 คน</div><div class="budget-hero-note">รวมเฉพาะรายการที่ยืนยันการจองแล้ว ไม่รวมค่ารถไฟ เรือ โรงแรมที่ยังไม่จอง หรือค่าใช้จ่ายระหว่างทริป</div></div><div class="budget-figure"><div class="budget-figure-icon">฿</div><div class="budget-figure-caption">THB equivalent</div><div class="budget-figure-sub">3 confirmed transactions</div></div></div>
+<div class="fx-panel"><div class="fx-intro"><div class="fx-title">อัตราแลกเปลี่ยนที่ใช้คำนวณ</div><div class="fx-help">ปรับตัวเลขได้เอง ยอดเงินบาทจะคำนวณใหม่ทันที</div></div><div class="fx-input-wrap"><label for="usdRate">1 USD =</label><input aria-label="อัตราแลกเปลี่ยน USD เป็น THB" id="usdRate" inputmode="decimal" max="200" min="1" step="0.01" type="number" value="33.77"/><span>THB</span></div><p class="fx-source">ค่าเริ่มต้นเป็นอัตรา mid-market อ้างอิงวันที่ 2 พ.ย. 2026 จาก <a href="https://wise.com/au/currency-converter/usd-to-thb-rate/history/02-11-2026" rel="noopener noreferrer" target="_blank">Wise ↗</a> ไม่ใช่อัตราที่บัตรเครดิตเรียกเก็บจริง และไม่มีการอัปเดตอัตโนมัติ</p><p class="fx-error" hidden="" id="fxError" role="alert">กรุณากรอกอัตรา USD/THB ที่มากกว่า 0</p></div>
+<div class="budget-metrics"><article class="budget-metric"><span>ยอดที่ชำระเป็น THB</span><strong>฿60,591.94</strong><small>SAS + Airbnb Bergen</small></article><article class="budget-metric"><span>ยอดที่ชำระเป็น USD</span><strong>$5,599.02</strong><small id="usdEquivalent">ประมาณ ฿189,078.91</small></article><article class="budget-metric"><span>จำนวนรายการยืนยัน</span><strong>3 <i>รายการ</i></strong><small>Norse · SAS · Airbnb</small></article></div>
+<div class="budget-detail"><div class="budget-detail-head"><div><span class="section-label">EXPENSE BREAKDOWN</span><h3>รายการค่าใช้จ่ายที่ยืนยันแล้ว</h3></div><span class="budget-detail-note">THB · 7 คน</span></div>
+<div class="budget-row"><div class="budget-row-top"><div class="budget-row-label"><span class="budget-dot dot-norse"></span><div><strong>Norse Atlantic · ตั๋วไป–กลับ</strong><small>BKK ↔ Stockholm ARN · 2 และ 16 เม.ย.</small></div></div><div class="budget-row-values"><strong id="norseThb">฿189,078.91</strong><small>USD 5,599.02 · แปลงตามเรทที่เลือก</small></div></div><div class="bar-track"><div class="bar-fill fill-norse" id="norseBar" style="width:75.73%"></div></div></div>
+<div class="budget-row"><div class="budget-row-top"><div class="budget-row-label"><span class="budget-dot dot-airbnb"></span><div><strong>Airbnb Bergen · ที่พัก 4 คืน</strong><small>2–6 เม.ย. · 7 คน · จองแล้ว</small></div></div><div class="budget-row-values"><strong>฿35,925.97</strong><small>THB 35,925.97 · ไม่มีการแปลง</small></div></div><div class="bar-track"><div class="bar-fill fill-airbnb" id="airbnbBar" style="width:14.39%"></div></div></div>
+<div class="budget-row"><div class="budget-row-top"><div class="budget-row-label"><span class="budget-dot dot-sas"></span><div><strong>SAS · ARN → OSL → BGO</strong><small>2 เม.ย. · 7 คน · ตั๋วออกแล้ว</small></div></div><div class="budget-row-values"><strong>฿24,665.97</strong><small>THB 24,665.97 · ไม่มีการแปลง</small></div></div><div class="bar-track"><div class="bar-fill fill-sas" id="sasBar" style="width:9.88%"></div></div></div>
+<div class="budget-totals"><span>ยอดรวม (ประมาณ)</span><strong id="budgetTotalBottom">฿249,670.85</strong></div>
 </div>
-
-<div class="wrap">
-
-  <div class="section-title">Day by day</div>
-
-  <div class="timeline">
-
-    <div class="leg" style="--dot: var(--norway)">
-      <div class="leg-head">
-        <span class="leg-flag">🇳🇴</span>
-        <span class="leg-city">Bergen</span>
-        <span class="leg-dates">ARRIVAL — APR 3–6</span>
-      </div>
-      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/View_of_Bryggen_-_Bergen,_Norway.jpg?width=900')"></div>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 3</div>
-          <div class="plan">✈️ BKK → Oslo → ✈️ Bergen ถึง 11:10<span class="sleep">🇳🇴 Bergen</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>ออกจาก BKK เที่ยงคืน (00:05) บิน <b>Thai Airways TG954</b> ถึง Oslo 07:25</li>
-            <li>ต่อเครื่อง <b>SAS SK257</b> ออก Oslo 10:15 ถึง Bergen 11:10 (เวลาท้องถิ่น)</li>
-            <li>เช็คอินที่พักย่าน <b>Bryggen / Torget</b> ช่วงบ่าย แล้วเดินเล่นเบาๆ รอบเมือง</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 4</div>
-          <div class="plan">Bergen เต็มวัน<span class="sleep">🇳🇴 Bergen</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li><b>Bryggen</b> ย่านท่าเรือเก่า มรดกโลก UNESCO อาคารไม้สีสันสดใส</li>
-            <li>ขึ้น <b>Fløibanen funicular</b> สู่จุดชมวิว Fløyen มองเมือง Bergen ทั้งเมือง</li>
-            <li>เดินเล่น <b>Fish Market (Fisketorget)</b> ริมท่าเรือ</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 5</div>
-          <div class="plan">🛥️ Bergen → Flåm → 🚆 Flåm → Bergen<span class="sleep">🇳🇴 Bergen</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <div class="day-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/00_2795_Fl%C3%A5m,_a_place_in_Norway.jpg?width=800')"></div>
-          <ul>
-            <li>เส้นทาง <b>Norway in a Nutshell</b> แบบไปกลับวันเดียวจาก Bergen</li>
-            <li>ล่องเรือฟยอร์ด <b>Nærøyfjord / Aurlandsfjord</b> ฟยอร์ดแคบสุดในนอร์เวย์</li>
-            <li>นั่ง <b>Flåm Railway</b> หนึ่งในทางรถไฟลาดชันที่สุดในโลก ผ่านน้ำตกและหุบเขา</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 6</div>
-          <div class="plan">🚆 Bergen → Oslo กลางวัน<span class="sleep">🇳🇴 Oslo</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>เก็บกระเป๋า เช้านั่ง <b>Bergen Railway</b> เส้นทางรถไฟกลางวันที่สวยที่สุดสายหนึ่งของโลก ข้ามที่ราบสูง Hardangervidda ราว 7 ชม.</li>
-            <li>ถึง Oslo ช่วงบ่าย เช็คอินที่พัก แล้วเดินเล่นย่าน <b>Aker Brygge</b> ริมน้ำ</li>
-            <li>เยี่ยมชม <b>Akershus Fortress</b> ป้อมปราการเก่าแก่ริมฟยอร์ด</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="leg" style="--dot: var(--norway)">
-      <div class="leg-head">
-        <span class="leg-flag">🇳🇴</span>
-        <span class="leg-city">Oslo</span>
-        <span class="leg-dates">APR 6–9</span>
-      </div>
-      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Operahuset_-_Oslo_Opera_House_-_Oslo,_Norway_2020-09-16_(01).jpg?width=900')"></div>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 7</div>
-          <div class="plan">Oslo เต็มวัน<span class="sleep">🇳🇴 Oslo</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li><b>Vigeland Sculpture Park</b> สวนประติมากรรมกลางแจ้งใหญ่ที่สุดในโลก</li>
-            <li><b>Museum of the Viking Age / Viking Ship Museum</b> เรือไวกิ้งโบราณ</li>
-            <li>ชม <b>Oslo Opera House</b> สถาปัตยกรรมหลังคาลาดที่เดินขึ้นไปชมวิวฟยอร์ดได้</li>
-            <li>ถ้ามีเวลาเหลือ แวะ <b>Munch Museum</b> หรือย่าน <b>Grünerløkka</b></li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 8</div>
-          <div class="plan">Oslo เต็มวัน<span class="sleep">🇳🇴 Oslo</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li><b>Bygdøy peninsula</b> คาบสมุทรพิพิธภัณฑ์ พิพิธภัณฑ์เรือ Fram และ Kon-Tiki</li>
-            <li>ขึ้น <b>Holmenkollen ski jump</b> จุดชมวิวเมือง Oslo แบบพาโนรามา</li>
-            <li>เก็บของฝากรอบเมือง เตรียมตัวขึ้นเรือวันถัดไป</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 9</div>
-          <div class="plan">Oslo เที่ยวครึ่งวัน → 🚢 ขึ้น Cruise<span class="sleep">🚢 Cruise</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>เช้าเที่ยวรอบเมืองเบาๆ หรือช้อปปิ้งของฝากรอบสุดท้ายใน Oslo</li>
-            <li>ขึ้นเรือ <b>DFDS overnight cruise</b> ช่วงบ่าย ล่องผ่าน Oslofjord</li>
-            <li>มื้อเย็นแบบ <b>buffet บนเรือ</b> พร้อมวิวพระอาทิตย์ตกกลางฟยอร์ด</li>
-            <li>ห้องพักบนเรือ = ที่พักในคืนนี้ ถึง Copenhagen เช้าวันรุ่งขึ้น</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="leg" style="--dot: var(--denmark)">
-      <div class="leg-head">
-        <span class="leg-flag">🇩🇰</span>
-        <span class="leg-city">Copenhagen</span>
-        <span class="leg-dates">APR 10–13</span>
-      </div>
-      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Nyhavn_Copenhagen_2.jpg?width=900')"></div>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 10</div>
-          <div class="plan">ถึง Copenhagen + เที่ยว<span class="sleep">🇩🇰 Copenhagen</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>เช็คอินที่พัก แล้วเดินเล่นย่าน <b>Nyhavn</b> ท่าเรือสีสันสดใสขึ้นชื่อของโคเปนเฮเกน</li>
-            <li>แวะดู <b>The Little Mermaid</b> รูปปั้นเงือกน้อยริมทะเล</li>
-            <li>ล่องเรือชมคลอง <b>canal tour</b> มุมมองเมืองจากผิวน้ำ</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 11</div>
-          <div class="plan">Copenhagen<span class="sleep">🇩🇰 Copenhagen</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li><b>Tivoli Gardens</b> สวนสนุกเก่าแก่กลางเมือง บรรยากาศดีตอนเย็น</li>
-            <li><b>Rosenborg Castle</b> ปราสาทเก่าพร้อมสวนสวย</li>
-            <li>ช้อปปิ้งถนนคนเดิน <b>Strøget</b></li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 12</div>
-          <div class="plan">Copenhagen<span class="sleep">🇩🇰 Copenhagen</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li><b>Freetown Christiania</b> ชุมชนอิสระ บรรยากาศศิลปะแปลกตา</li>
-            <li>ตลาดอาหาร <b>Torvehallerne</b> ของสด ของกินท้องถิ่น</li>
-            <li>ทริปเสริมไป <b>Malmö</b> ฝั่งสวีเดน นั่งรถไฟข้าม Øresund Bridge แค่ ~35 นาที</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 13</div>
-          <div class="plan">Copenhagen<span class="sleep">🇩🇰 Copenhagen</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>ทริปวันเดียวไป <b>Louisiana Museum of Modern Art</b> ริมทะเล ห่างจากเมืองราว 40 นาที</li>
-            <li>หรือเดินชม <b>National Museum of Denmark</b> ในเมือง</li>
-            <li>เก็บของฝาก มื้อสุดท้ายในโคเปนเฮเกนแบบสบายๆ</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="leg" style="--dot: var(--sweden)">
-      <div class="leg-head">
-        <span class="leg-flag">🇸🇪</span>
-        <span class="leg-city">Stockholm</span>
-        <span class="leg-dates">APR 14–18 — RETURN</span>
-      </div>
-      <div class="leg-image" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Sweden._Stockholm._Gamla_stan_051.JPG?width=900')"></div>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 14</div>
-          <div class="plan">🚆 Copenhagen → Stockholm<span class="sleep">🇸🇪 Stockholm</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>นั่งรถไฟข้าม <b>Øresund Bridge</b> เชื่อมเดนมาร์ก-สวีเดน วิวสวยช่วงข้ามสะพาน</li>
-            <li>ใช้เวลาเดินทางราวครึ่งวัน ถึง Stockholm ช่วงบ่าย/เย็น</li>
-            <li>เช็คอินที่พัก พักผ่อนก่อนวันเต็มวันถัดไป</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 15</div>
-          <div class="plan">Stockholm<span class="sleep">🇸🇪 Stockholm</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>วันชิลๆ เดินเล่นย่าน <b>Gamla Stan</b> แบบไม่เร่งรีบ ถ่ายรูปเมืองเก่า</li>
-            <li>นั่งคาเฟ่ ชิม <b>fika</b> ขนมและกาแฟสไตล์สวีเดน</li>
-            <li>เก็บแรงไว้สำหรับวันเต็มวันพรุ่งนี้</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 16</div>
-          <div class="plan">Stockholm เต็มวัน<span class="sleep">🇸🇪 Stockholm</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li><b>Vasa Museum</b> เรือรบโบราณศตวรรษที่ 17 ที่กู้ขึ้นมาสมบูรณ์ที่สุดในโลก</li>
-            <li>เดินเล่น <b>Gamla Stan</b> ตอนกลางวัน ถ่ายรูปตรอก Mårten Trotzigs Gränd</li>
-            <li><b>Fotografiska</b> พิพิธภัณฑ์ภาพถ่าย พร้อมคาเฟ่วิวเมือง หรือ <b>ABBA Museum</b> สำหรับคนชอบเพลง</li>
-            <li>มื้อเย็นสุดท้ายย่าน <b>Södermalm</b> คาเฟ่และร้านอาหารสไตล์อินดี้</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 17</div>
-          <div class="plan">Stockholm เต็มวัน<span class="sleep">🇸🇪 Stockholm</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li><b>Skansen</b> พิพิธภัณฑ์กลางแจ้งบนเกาะ Djurgården วิถีชีวิตสวีเดนดั้งเดิม + สวนสัตว์เล็กๆ</li>
-            <li>ล่องเรือชม <b>หมู่เกาะ Stockholm Archipelago</b> ช่วงบ่าย ถ้าอากาศเอื้ออำนวย</li>
-            <li>เก็บของฝากรอบสุดท้าย เตรียมตัวบินกลับวันถัดไป</li>
-          </ul>
-        </div>
-      </details>
-      <details class="day">
-        <summary>
-          <div class="date">Apr 18</div>
-          <div class="plan">✈️ Stockholm → BKK (ตรง)<span class="sleep">—</span></div>
-          <span class="chevron">▾</span>
-        </summary>
-        <div class="day-detail">
-          <ul>
-            <li>เช้าอิสระ เช็คเอาท์ที่พัก เผื่อเวลาเดินทางไปสนามบิน Arlanda</li>
-            <li>บิน <b>Thai Airways TG961</b> เที่ยวบินตรง ออกจาก Arlanda 13:50</li>
-            <li>ถึง BKK 05:50 เวลาท้องถิ่นของวันถัดไป (Apr 19)</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
-<div id="panel-booking" class="tab-panel">
-<div class="wrap">
-
-  <div class="section-title">Booking List</div>
-
-  <div class="booking-group-title">✈️ ตั๋วเดินทาง (เครื่องบิน / รถไฟ / เรือ)</div>
-
-  <div class="booking-list">
-
-    <div class="booking-row" style="--dot: var(--norway)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">✈️ BKK → Oslo → Bergen</div>
-        <div class="nights">APR 3 · Thai Airways TG954 + SAS SK257 · 1 stop</div>
-        <div class="fields">
-          <div class="field"><span>ออกเดินทาง</span><b>Bangkok 00:05</b></div>
-          <div class="field"><span>ต่อเครื่อง</span><b>Oslo 07:25–10:15</b></div>
-          <div class="field"><span>ถึง</span><b>Bergen 11:10</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--norway)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🛥️🚆 Norway in a Nutshell</div>
-        <div class="nights">APR 5 · ทัวร์วันเดียว Bergen → Flåm → Bergen</div>
-        <div class="fields">
-          <div class="field"><span>ประกอบด้วย</span><b>เรือฟยอร์ด + Flåm Railway</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--norway)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🚆 Bergen → Oslo (Bergen Railway)</div>
-        <div class="nights">APR 6 · รถไฟกลางวัน ~7 ชม.</div>
-        <div class="fields">
-          <div class="field"><span>ออกเดินทาง</span><b>Bergen</b></div>
-          <div class="field"><span>ถึง</span><b>Oslo</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--aurora-a)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🚢 DFDS Cruise Oslo → Copenhagen</div>
-        <div class="nights">APR 9–10 · 1 คืน (บนเรือ)</div>
-        <div class="fields">
-          <div class="field"><span>ประเภทห้อง</span><b>Sea view cabin แนะนำ</b></div>
-          <div class="field"><span>ขึ้นเรือ</span><b>Oslo, Apr 9</b></div>
-          <div class="field"><span>ถึง</span><b>Copenhagen, Apr 10</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--denmark)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🚆 Copenhagen → Stockholm</div>
-        <div class="nights">APR 14 · รถไฟ</div>
-        <div class="fields">
-          <div class="field"><span>ออกเดินทาง</span><b>Copenhagen</b></div>
-          <div class="field"><span>ถึง</span><b>Stockholm</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--sweden)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">✈️ Stockholm → BKK</div>
-        <div class="nights">APR 18 · Thai Airways TG961 · ตรง</div>
-        <div class="fields">
-          <div class="field"><span>ออกเดินทาง</span><b>Arlanda 13:50</b></div>
-          <div class="field"><span>ถึง</span><b>Bangkok 05:50 (+1, Apr 19)</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-  </div>
-
-  <div class="booking-group-title">🏨 ที่พัก</div>
-
-  <div class="booking-list">
-
-    <div class="booking-row" style="--dot: var(--norway)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🇳🇴 Bergen</div>
-        <div class="nights">APR 3–6 · 3 คืน</div>
-        <div class="fields">
-          <div class="field"><span>ย่านแนะนำ</span><b>ใกล้ Bryggen / Torget</b></div>
-          <div class="field"><span>เช็คอิน</span><b>Apr 3</b></div>
-          <div class="field"><span>เช็คเอาท์</span><b>Apr 6 (ก่อนขึ้นรถไฟ)</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--norway)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🇳🇴 Oslo</div>
-        <div class="nights">APR 6–9 · 3 คืน</div>
-        <div class="fields">
-          <div class="field"><span>ย่านแนะนำ</span><b>ใกล้ Oslo Central Station</b></div>
-          <div class="field"><span>เช็คอิน</span><b>Apr 6</b></div>
-          <div class="field"><span>เช็คเอาท์</span><b>Apr 9 (ก่อนขึ้นเรือ)</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--denmark)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🇩🇰 Copenhagen</div>
-        <div class="nights">APR 10–14 · 4 คืน</div>
-        <div class="fields">
-          <div class="field"><span>ย่านแนะนำ</span><b>Indre By / Vesterbro</b></div>
-          <div class="field"><span>เช็คอิน</span><b>Apr 10</b></div>
-          <div class="field"><span>เช็คเอาท์</span><b>Apr 14</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-    <div class="booking-row" style="--dot: var(--sweden)">
-      <div class="dot"></div>
-      <div>
-        <div class="city">🇸🇪 Stockholm</div>
-        <div class="nights">APR 14–18 · 4 คืน</div>
-        <div class="fields">
-          <div class="field"><span>ย่านแนะนำ</span><b>Norrmalm / Södermalm</b></div>
-          <div class="field"><span>เช็คอิน</span><b>Apr 14</b></div>
-          <div class="field"><span>เช็คเอาท์</span><b>Apr 18</b></div>
-        </div>
-      </div>
-      <span class="status">ยังไม่จอง</span>
-    </div>
-
-  </div>
-
-</div>
-</div>
-
-<div id="panel-budget" class="tab-panel">
-<div class="wrap">
-
-  <div class="section-title">Budget estimate</div>
-
-  <div class="budget-table-wrap">
-  <table class="budget-table">
-    <thead>
-      <tr><th>หมวด</th><th>รายละเอียด</th><th>ประมาณการ (THB)</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="cat">✈️ ตั๋วเครื่องบิน</td>
-        <td class="note">TG954+SK257 BKK–Bergen (ผ่าน Oslo) / TG961 Stockholm–BKK (ตรง) — แผนเที่ยวบิน ยังไม่จอง</td>
-        <td>35,000</td>
-      </tr>
-      <tr>
-        <td class="cat">🚆 รถไฟ</td>
-        <td class="note">Bergen Railway (Bergen–Oslo), Copenhagen–Stockholm</td>
-        <td>8,000</td>
-      </tr>
-      <tr>
-        <td class="cat">🚢 เรือ</td>
-        <td class="note">DFDS overnight cruise Oslo–Copenhagen (ห้องพัก)</td>
-        <td>6,500</td>
-      </tr>
-      <tr>
-        <td class="cat">🛥️ ทัวร์ Flåm</td>
-        <td class="note">Norway in a Nutshell (เรือ+รถไฟ) วันเดียว</td>
-        <td>5,500</td>
-      </tr>
-      <tr>
-        <td class="cat">🏨 ที่พัก</td>
-        <td class="note">รวม 14 คืน (ไม่รวมคืนบนเรือ)</td>
-        <td>56,000</td>
-      </tr>
-      <tr>
-        <td class="cat">🍽️ อาหาร</td>
-        <td class="note">16 วัน เฉลี่ย ~1,800/วัน</td>
-        <td>29,000</td>
-      </tr>
-      <tr>
-        <td class="cat">🎟️ กิจกรรม/พิพิธภัณฑ์</td>
-        <td class="note">ค่าเข้าชมสถานที่ต่างๆ ตลอดทริป</td>
-        <td>12,000</td>
-      </tr>
-      <tr>
-        <td class="cat">🚇 เดินทางในเมือง</td>
-        <td class="note">ตั๋วขนส่งสาธารณะแต่ละเมือง</td>
-        <td>6,000</td>
-      </tr>
-      <tr>
-        <td class="cat">🧳 อื่นๆ / สำรอง</td>
-        <td class="note">ของฝาก ค่าใช้จ่ายฉุกเฉิน</td>
-        <td>10,000</td>
-      </tr>
-      <tr class="total">
-        <td colspan="2">รวมโดยประมาณ</td>
-        <td>~168,000</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-  <p class="budget-caption">ตัวเลขเป็นการประมาณการเบื้องต้นต่อคน ยังไม่รวมส่วนลด/โปรโมชั่น ควรอัปเดตหลังจองตั๋วและที่พักจริง</p>
-
-</div>
-</div>
-
-<footer>SCANDINAVIA · APR 3–18</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<div class="budget-remaining"><div><strong>ยังไม่รวมรายการที่ยังไม่จอง</strong><p>รถไฟ Bergen → Oslo, เรือ Oslo → Copenhagen, รถไฟ Copenhagen → Stockholm, ที่พัก Oslo / Copenhagen / Stockholm, ค่าเดินทางท้องถิ่น อาหาร ประกัน และวีซ่า</p></div><span class="res-pill res-pill-pending">ยังไม่ทราบราคา</span></div>
+<div class="budget-footnote">หมายเหตุ: เป็น “ยอดเทียบเท่าเงินบาท” จากราคาเดิม ไม่ใช่การรับรองยอดเงินบาทที่ถูกเรียกเก็บจริง โดยเฉพาะเที่ยวบิน Norse ที่จ่ายเป็น USD</div>
+</section>
+<footer class="section-footer"><strong>See you in Scandinavia.</strong><div>จัดจากแผน Google Sheets ล่าสุด · อัปเดตข้อมูลแผน ณ 2 พ.ย. 2026</div><div>เอกสารนี้เป็นแผน ไม่ใช่ใบยืนยันสำหรับบริการที่ยังไม่จอง</div><div style="margin-top:8px"><a href="https://docs.google.com/spreadsheets/d/1SZ5dGtLfjQTjlXsYfsEuFj_utD-qphuQI8ybvTlteJg/edit" rel="noopener" target="_blank">เปิดตาราง Google Sheets ต้นทาง</a></div></footer>
+</main>
 <script>
-  const cities = [
-    { name: "Bergen",    lat: 60.3913, lng: 5.3221,  color: "#e0645a" },
-    { name: "Flåm",      lat: 60.8608, lng: 7.1118,  color: "#e0645a" },
-    { name: "Oslo",      lat: 59.9122, lng: 10.7313, color: "#e0645a" },
-    { name: "Copenhagen",lat: 55.6761, lng: 12.5683, color: "#e6857e" },
-    { name: "Stockholm", lat: 59.3327, lng: 18.0656, color: "#f6c945" }
-  ];
+const itinerary=[{"date":"2027-04-02","city":"Bergen","country":"no","headline":"เริ่มต้นการเดินทางสู่ Bergen","overnight":"Bergen Airbnb · จองแล้ว","items":[{"time":"05:00 – 12:55","title":"Bangkok → Stockholm","desc":"Norse Atlantic N0194 • BKK → ARN","note":"จองแล้ว • Economy Classic","type":"flight","status":"booked"},{"time":"12:55 – 16:55","title":"เปลี่ยนเครื่องที่ Stockholm ARN","desc":"ผ่าน ตม. รับกระเป๋า 7 ใบ และเช็กอิน SAS ใหม่","note":"คนละการจอง • เผื่อเวลา 4 ชม. • มีความเสี่ยงหาก Norse ล่าช้า","type":"transfer","status":"warning"},{"time":"16:55 – 17:55","title":"Stockholm → Oslo","desc":"SAS SK497 • ARN → OSL","note":"ออกตั๋วแล้ว","type":"flight","status":"booked"},{"time":"17:55 – 19:35","title":"ต่อเครื่องที่ Oslo","desc":"รอต่อ SAS SK283 โดยสัมภาระโหลดส่งต่อไป Bergen","note":"เวลาเชื่อมต่อ 1 ชม. 40 นาที","type":"transfer","status":"booked"},{"time":"19:35 – 20:30","title":"Oslo → Bergen","desc":"SAS SK283 • OSL → BGO","note":"ออกตั๋วแล้ว","type":"flight","status":"booked"},{"time":"หลัง 20:30","title":"เดินทางเข้า Airbnb","desc":"Halvkannebakken 3, Bergenhus • เจ้าของที่พัก Niclas","note":"ที่พักจองแล้ว • ต้องแจ้งขอวิธีเช็กอินดึก","type":"stay","status":"booked"}],"subtitle":"เดินทางไกลและมีการต่อเครื่อง 2 ครั้ง"},{"date":"2027-04-03","city":"Bergen","country":"no","headline":"ย่านเมืองเก่าและวิวฟยอร์ด","overnight":"Bergen Airbnb · จองแล้ว","items":[{"time":"09:00 – 11:00*","title":"Bryggen","desc":"เดินชมอาคารไม้สีสันริมท่าเรือเก่า","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"11:00 – 12:30*","title":"Bergen Fish Market","desc":"รับประทานอาหารกลางวันและเดินเล่นริมท่าเรือ","note":"ช่วงเวลาเสนอ","type":"food","status":"plan"},{"time":"13:00 – 15:00*","title":"Mount Fløyen / Fløibanen","desc":"ขึ้นจุดชมวิวเหนือเมือง เลือกตามสภาพอากาศ","note":"ยังไม่ตรวจตารางเปิดและราคาตั๋ว","type":"visit","status":"plan"},{"time":"16:00 – 18:00*","title":"Bergen City Centre","desc":"เดินเล่นตามสะดวกและกลับที่พัก","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"}],"subtitle":"เที่ยวในเมือง เดินทางไม่ซับซ้อน"},{"date":"2027-04-04","city":"Bergen","country":"no","headline":"Flåm Railway และ Nærøyfjord","overnight":"Bergen Airbnb · จองแล้ว","items":[{"time":"ทั้งวัน","title":"Flåm Railway / Nærøyfjord","desc":"แผนชมวิวรถไฟและล่องฟยอร์ดแบบไปเช้าเย็นกลับ","note":"ยังไม่กำหนดเส้นทางต่อรถ เรือ และเวลาจริงเดือนเมษายน 2027","type":"rail","status":"tobook"},{"time":"ช่วงเย็น","title":"กลับ Bergen","desc":"เผื่อเวลาเดินทางกลับและสภาพอากาศ","note":"ต้องตรวจรอบบริการก่อนจอง","type":"transfer","status":"plan"}],"subtitle":"วันธรรมชาติแบบเต็มวัน • ยังเป็นแผนเบื้องต้น"},{"date":"2027-04-05","city":"Bergen","country":"no","headline":"Bergen แบบสบาย ๆ","overnight":"Bergen Airbnb · จองแล้ว","items":[{"time":"09:30 – 11:30*","title":"Bergenhus Fortress","desc":"เที่ยวบริเวณป้อมเก่าและท่าเรือ","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"12:00 – 13:30*","title":"Bergen Centre","desc":"อาหารกลางวันในตัวเมือง","note":"ช่วงเวลาเสนอ","type":"food","status":"plan"},{"time":"14:00 – 16:30*","title":"Nordnes หรือพิพิธภัณฑ์","desc":"เลือกกิจกรรมตามอากาศและความสนใจของครอบครัว","note":"ยังไม่เลือกกิจกรรมแน่นอน","type":"visit","status":"plan"},{"time":"ช่วงเย็น","title":"เตรียมเดินทางไป Oslo","desc":"จัดกระเป๋าและตรวจรถไฟ Bergen Line","note":"7 คน พร้อมกระเป๋าใหญ่","type":"stay","status":"plan"}],"subtitle":"วันที่ปรับยืดหยุ่นได้"},{"date":"2027-04-06","city":"Oslo","country":"no","headline":"รถไฟชมวิว Bergen → Oslo","overnight":"Oslo · ยังไม่จอง","items":[{"time":"ก่อน 11:00","title":"เช็กเอาต์ Airbnb Bergen","desc":"วันสุดท้ายของการพัก Bergen","note":"ยืนยันเช็กเอาต์ 11:00","type":"stay","status":"booked"},{"time":"รอบรถไฟ TBD","title":"Bergen Line / Vy","desc":"นั่งรถไฟเส้นทางชมวิวไป Oslo","note":"ยังไม่จอง • เวลาและราคาต้องตรวจอีกครั้ง","type":"rail","status":"tobook"},{"time":"ช่วงเย็น","title":"เช็กอินที่พัก Oslo","desc":"แนะนำทำเลใกล้ Oslo S / Bjørvika","note":"ยังไม่จอง • เข้าพัก 6–8 เม.ย. รวม 2 คืน","type":"stay","status":"tobook"}],"subtitle":"วันเดินทางระหว่างเมือง"},{"date":"2027-04-07","city":"Oslo","country":"no","headline":"สวนประติมากรรมและริมน้ำ","overnight":"Oslo · ยังไม่จอง","items":[{"time":"09:00 – 11:00*","title":"Vigeland Sculpture Park","desc":"เดินสวนและชมผลงานประติมากรรม","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"11:30 – 13:00*","title":"Royal Palace","desc":"เดินบริเวณพระราชวังและรับประทานอาหารกลางวัน","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"14:00 – 16:30*","title":"City Hall + Aker Brygge","desc":"เดินเลียบย่านท่าเรือ Oslo","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"ช่วงเย็น","title":"พักผ่อนใน Oslo","desc":"รับประทานอาหารเย็นและพักตามสะดวก","note":"","type":"food","status":"plan"}],"subtitle":"วันเที่ยว Oslo เต็มวัน"},{"date":"2027-04-08","city":"Oslo → Copenhagen","country":"sea","headline":"ออกจาก Oslo ด้วยเรือนอนค้างคืน","overnight":"Go Nordic Cruiseline · ยังไม่จอง","items":[{"time":"ช่วงเช้า","title":"เช็กเอาต์โรงแรม Oslo","desc":"ฝากหรือจัดการกระเป๋าก่อนเที่ยว","note":"เช็กเอาต์ 8 เม.ย. • ไม่ต้องจองโรงแรม Oslo คืนนี้","type":"stay","status":"tobook"},{"time":"09:00 – 10:30*","title":"Oslo Opera House","desc":"ถ่ายรูปและเดินเล่นบริเวณอาคารโอเปรา","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"10:45 – 12:00*","title":"Akershus Fortress","desc":"เดินชมป้อมและบริเวณท่าเรือ","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"12:00 – 13:00*","title":"อาหารกลางวัน + รับกระเป๋า","desc":"เตรียมสัมภาระเพื่อเดินทางไปท่าเรือ","note":"ช่วงเวลาเสนอ","type":"food","status":"plan"},{"time":"13:30 – 14:45*","title":"เดินทางไป Oslo ferry terminal","desc":"ท่าเรือ Akershusstranda 31 • เผื่อเวลาสำหรับกระเป๋าใหญ่ 7 ใบ","note":"แนะนำไปถึงแต่เนิ่น ๆ","type":"transfer","status":"plan"},{"time":"15:15 – 16:15","title":"เช็กอิน / ขึ้นเรือ","desc":"Go Nordic Cruiseline • ห้อง Standard เริ่มขึ้นเรือราว 15:15","note":"ปิดเช็กอินทั่วไป 16:15 • ตรวจตามใบจองจริง","type":"ship","status":"tobook"},{"time":"16:30 → 10:00 (+1)","title":"Oslo → Copenhagen","desc":"เรือนอนค้างคืน • ถึง Copenhagen เช้า 9 เม.ย.","note":"ยังไม่จอง • ตรวจ 2 ห้องสำหรับ 7 คน (4+3)","type":"ship","status":"tobook"}],"subtitle":"นอนบนเรือ 1 คืน ไม่ต้องจองโรงแรม Oslo วันที่ 8"},{"date":"2027-04-09","city":"Copenhagen","country":"dk","headline":"ถึง Copenhagen และเริ่มเที่ยว","overnight":"Copenhagen · ยังไม่จอง","items":[{"time":"10:00","title":"ถึง Copenhagen","desc":"Go Nordic Cruiseline เทียบท่าตามตารางทั่วไป","note":"ยังไม่จอง • เวลาเรือต้องยืนยัน","type":"ship","status":"tobook"},{"time":"10:00 – 11:30*","title":"ท่าเรือ → ตัวเมือง","desc":"จาก Dampfærgevej 30 เดินทางไปใกล้ København H / Nørreport","note":"รถรับส่ง/ขนส่งสาธารณะต้องตรวจรอบและราคา","type":"transfer","status":"plan"},{"time":"11:30 – 18:00*","title":"ฝากกระเป๋า + เที่ยวเมือง","desc":"ฝากกระเป๋าที่โรงแรมก่อนเดินเล่น","note":"โรงแรม Copenhagen 9–12 เม.ย. ยังไม่จอง","type":"stay","status":"tobook"}],"subtitle":"วันขึ้นฝั่ง เดินเที่ยวได้แบบไม่เร่ง"},{"date":"2027-04-10","city":"Copenhagen","country":"dk","headline":"คลอง Nyhavn และย่านประวัติศาสตร์","overnight":"Copenhagen · ยังไม่จอง","items":[{"time":"09:30 – 11:00*","title":"Nyhavn","desc":"ย่านบ้านสีสันริมคลองและถ่ายภาพ","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"11:00 – 12:30*","title":"Amalienborg + Frederik’s Church","desc":"ชมเขตพระราชวังและโบสถ์","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"13:30 – 15:30*","title":"Canal Cruise","desc":"ล่องเรือชมเมืองแบบเลือกทำได้","note":"ต้องตรวจรอบเรือและเปิดให้บริการ","type":"ship","status":"plan"},{"time":"16:00 – 18:00*","title":"Strøget","desc":"ถนนช้อปปิ้งและอาหารเย็น","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"}],"subtitle":"วันเที่ยวไฮไลต์ Copenhagen"},{"date":"2027-04-11","city":"Copenhagen","country":"dk","headline":"ปราสาท สวน และตลาดอาหาร","overnight":"Copenhagen · ยังไม่จอง","items":[{"time":"09:30 – 11:30*","title":"Rosenborg Castle / King’s Garden","desc":"ชมสวนหรือเข้าชมปราสาทตามความสนใจ","note":"ต้องตรวจตั๋วและรอบเปิด","type":"visit","status":"plan"},{"time":"12:00 – 13:30*","title":"Torvehallerne","desc":"รับประทานอาหารกลางวันที่ตลาดอาหาร","note":"ช่วงเวลาเสนอ","type":"food","status":"plan"},{"time":"14:00 – 16:30*","title":"Christiansborg / ย่านเมืองเก่า","desc":"เดินชมเมืองหรือเลือกเข้าชมพระราชวัง","note":"ต้องตรวจรอบเปิด","type":"visit","status":"plan"},{"time":"ช่วงเย็น","title":"Tivoli (ตัวเลือก)","desc":"เข้าชมหากสวนสนุกเปิดในวันที่ไป","note":"ต้องตรวจปฏิทินเปิดฤดูกาล 2027","type":"visit","status":"plan"}],"subtitle":"เน้นเดินเที่ยวในเมือง"},{"date":"2027-04-12","city":"Stockholm","country":"se","headline":"รถไฟ Copenhagen → Stockholm","overnight":"Stockholm · ยังไม่จอง","items":[{"time":"ช่วงเช้า","title":"เช็กเอาต์ Copenhagen","desc":"เดินทางไปสถานี København H","note":"โรงแรม 9–12 เม.ย. ยังไม่จอง","type":"stay","status":"tobook"},{"time":"รอบรถไฟ TBD","title":"Copenhagen → Stockholm","desc":"รถไฟผ่าน Malmö • เลือกรอบเปลี่ยนขบวนน้อย","note":"ยังไม่จอง • ตรวจเวลาและค่าตั๋ว","type":"rail","status":"tobook"},{"time":"บ่าย / เย็น","title":"เช็กอิน Stockholm","desc":"แนะนำทำเล Stockholm Central / Norrmalm","note":"เข้าพัก 12–16 เม.ย. รวม 4 คืน • ยังไม่จอง","type":"stay","status":"tobook"},{"time":"ช่วงเย็น*","title":"Gamla Stan","desc":"เดินเล่นเมืองเก่าหากไปถึงทัน","note":"ขึ้นอยู่กับเวลารถไฟ","type":"visit","status":"plan"}],"subtitle":"วันเดินทางไปประเทศสุดท้าย"},{"date":"2027-04-13","city":"Stockholm","country":"se","headline":"เมืองเก่า Gamla Stan","overnight":"Stockholm · ยังไม่จอง","items":[{"time":"09:30 – 11:30*","title":"Gamla Stan + Stortorget","desc":"เดินชมตรอกเก่าและจัตุรัสสีสัน","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"11:30 – 13:30*","title":"Royal Palace","desc":"ชมภายนอกหรือเข้าชมตามความสนใจ","note":"ตั๋วยังไม่จอง","type":"visit","status":"plan"},{"time":"14:00 – 16:00*","title":"Nobel Prize Museum / City Walk","desc":"เลือกพิพิธภัณฑ์หรือเดินเล่น","note":"ช่วงเวลาเสนอ","type":"visit","status":"plan"},{"time":"ช่วงเย็น","title":"Stockholm centre","desc":"รับประทานอาหารและพักผ่อน","note":"","type":"food","status":"plan"}],"subtitle":"เที่ยวเมืองเก่าและแลนด์มาร์ก"},{"date":"2027-04-14","city":"Stockholm","country":"se","headline":"พิพิธภัณฑ์และเกาะ Djurgården","overnight":"Stockholm · ยังไม่จอง","items":[{"time":"09:30 – 12:00*","title":"Vasa Museum","desc":"ชมเรือประวัติศาสตร์ในพิพิธภัณฑ์","note":"ตรวจตั๋วและเวลาทำการ","type":"visit","status":"plan"},{"time":"12:00 – 14:00*","title":"Djurgården","desc":"อาหารกลางวันและเดินชมพื้นที่สวน","note":"ช่วงเวลาเสนอ","type":"food","status":"plan"},{"time":"14:00 – 16:30*","title":"Skansen (ตัวเลือก)","desc":"พิพิธภัณฑ์กลางแจ้งหรือกิจกรรมทางเลือก","note":"ตรวจเวลาเปิดและราคาตั๋ว","type":"visit","status":"plan"},{"time":"ช่วงเย็น","title":"กลับโรงแรม","desc":"พักผ่อน","note":"","type":"stay","status":"plan"}],"subtitle":"เหมาะกับครอบครัว"},{"date":"2027-04-15","city":"Stockholm","country":"se","headline":"Stockholm ตามสบาย","overnight":"Stockholm · ยังไม่จอง","items":[{"time":"09:30 – 11:30*","title":"Stockholm City Hall","desc":"ชมอาคารและวิวริมน้ำ","note":"หากเข้าชมด้านในให้ตรวจเวลาทัวร์","type":"visit","status":"plan"},{"time":"12:00 – 15:00*","title":"Norrmalm","desc":"ช้อปปิ้ง คาเฟ่ และอาหารกลางวัน","note":"ช่วงเวลาเสนอ","type":"food","status":"plan"},{"time":"ช่วงเย็น","title":"เตรียมบินกลับไทย","desc":"ตรวจเที่ยวบิน Norse และน้ำหนักสัมภาระ","note":"บิน 16 เม.ย. เวลา 14:40","type":"stay","status":"plan"}],"subtitle":"วันสุดท้ายเต็มวันในยุโรป"},{"date":"2027-04-16","city":"Stockholm → Bangkok","country":"se","headline":"เดินทางกลับประเทศไทย","overnight":"บนเครื่องบิน → ถึงไทย 17 เม.ย.","items":[{"time":"ก่อน 11:40","title":"ถึงสนามบิน Stockholm ARN","desc":"เผื่อเวลาเช็กอินและโหลดกระเป๋าสำหรับ 7 คน","note":"แนะนำถึงก่อนเที่ยวบินอย่างน้อย 3 ชม.","type":"transfer","status":"plan"},{"time":"14:40","title":"Stockholm → Bangkok","desc":"Norse Atlantic N0191 • ARN → BKK","note":"ตั๋วจองแล้ว • Economy Classic","type":"flight","status":"booked"},{"time":"17 เม.ย. 07:10","title":"ถึงกรุงเทพฯ","desc":"เดินทางถึงสนามบินสุวรรณภูมิในวันถัดไป","note":"ตามเที่ยวบินที่จอง","type":"flight","status":"booked"}],"subtitle":"ปิดท้ายทริป 15 วัน / 14 คืน"}];
+const icons={flight:'plane',transfer:'transfer',rail:'train',ship:'ship',stay:'stay',food:'food',visit:'visit'};
+const countries={no:'Norway',dk:'Denmark',se:'Sweden',sea:'Overnight ferry'};
+const thaiDays=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+const fmt=(date)=>{const d=new Date(date+'T12:00:00');return {day:thaiDays[d.getDay()],num:d.getDate(),month:'เม.ย.'};};
+const safe=(s)=>String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const statusText={booked:'จองแล้ว',tobook:'ยังไม่จอง',warning:'ควรเผื่อเวลา',plan:'แผนเสนอ'};
+const dayIndex=document.getElementById('dayIndex'),daysContainer=document.getElementById('days');
+for(let i=0;i<itinerary.length;i++){
+ const d=itinerary[i],f=fmt(d.date),id='day-'+d.date;
+ const b=document.createElement('button');b.className='day-link';b.dataset.country=d.country;b.dataset.day=d.date;b.innerHTML=`<span class="n">${String(i+1).padStart(2,'0')}</span> <span class="d">${f.num} APR</span><small>${safe(d.city)}</small>`;
+ b.onclick=()=>{document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});markActive(d.date);};dayIndex.append(b);
+ const section=document.createElement('section');section.className='day-panel';section.dataset.country=d.country;section.dataset.date=d.date;section.dataset.transport=d.items.some(x=>['flight','rail','ship'].includes(x.type))?'true':'false';section.id=id;
+ const events=d.items.map((e,j)=>`<div class="event" data-type="${safe(e.type)}"><div class="event-time">${safe(e.time)}</div><div class="event-stem"><span class="event-icon"><svg class="icon" aria-hidden="true"><use href="#i-${icons[e.type]||'visit'}"/></svg></span></div><div class="event-detail"><div class="event-title">${safe(e.title)}</div><p class="event-desc">${safe(e.desc)}</p><div class="event-extra">${e.status&&e.status!=='plan'?`<span class="status ${safe(e.status)}">${statusText[e.status]||''}</span>`:''}${e.note?`<span class="event-note">${safe(e.note)}</span>`:''}</div></div></div>`).join('');
+ section.innerHTML=`<div class="day-head"><div class="day-number"><strong>${f.num}</strong><small>APR</small></div><div class="day-top"><div class="day-small"><span>DAY ${String(i+1).padStart(2,'0')} · ${f.day}</span><span class="city-pin">${safe(d.city)}</span></div><h3>${safe(d.headline)}</h3></div><button class="collapse" aria-label="ย่อหรือขยายวันที่ ${f.num} เมษายน" aria-expanded="true"><svg class="icon"><use href="#i-down"/></svg></button></div><div class="events">${events}</div><div class="overnight"><span class="label">OVERNIGHT</span><strong>${safe(d.overnight)}</strong></div>`;
+ section.querySelector('.collapse').onclick=()=>{section.classList.toggle('collapsed');section.querySelector('.collapse').setAttribute('aria-expanded',String(!section.classList.contains('collapsed')));};daysContainer.append(section);
+}
+const empty=document.createElement('div');empty.className='empty-state';empty.textContent='ไม่มีวันเดินทางในหมวดนี้';daysContainer.append(empty);
+function markActive(date){for(const el of dayIndex.querySelectorAll('.day-link'))el.classList.toggle('active',el.dataset.day===date);}
+function setFilter(filter){let visible=0;for(const el of daysContainer.querySelectorAll('.day-panel')){const show=filter==='all'||el.dataset.country===filter||(filter==='transport'&&el.dataset.transport==='true');el.classList.toggle('hidden',!show);if(show)visible++;}for(const b of document.querySelectorAll('.filter'))b.setAttribute('aria-pressed',String(b.dataset.filter===filter));document.getElementById('countText').textContent='แสดง '+visible+' วัน';empty.classList.toggle('show',visible===0);const first=daysContainer.querySelector('.day-panel:not(.hidden)');if(first)markActive(first.dataset.date);for(const el of dayIndex.querySelectorAll('.day-link')){const matching=daysContainer.querySelector('#day-'+el.dataset.day);el.style.display=matching?.classList.contains('hidden')?'none':'';}}
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{setFilter(b.dataset.filter);document.getElementById('timeline').scrollIntoView({behavior:'smooth',block:'start'});}));
+document.querySelectorAll('.city-card').forEach(a=>a.addEventListener('click',()=>setFilter('all')));
+document.getElementById('printBtn').addEventListener('click',()=>{const f=document.querySelector('.filter[aria-pressed="true"]').dataset.filter;setFilter('all');window.print();setFilter(f);});
+markActive(itinerary[0].date);
+if('IntersectionObserver' in window){const obs=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting&&!e.target.classList.contains('hidden')).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);if(visible.length)markActive(visible[0].target.dataset.date);},{rootMargin:'-26% 0px -58% 0px',threshold:0});daysContainer.querySelectorAll('.day-panel').forEach(s=>obs.observe(s));}
 
-  const map = L.map('map', {
-    zoomControl: true,
-    scrollWheelZoom: false,
-    attributionControl: true
-  }).setView([59.5, 10.5], 5);
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    subdomains: 'abcd',
-    maxZoom: 19
-  }).addTo(map);
-
-  const latlngs = cities.map(c => [c.lat, c.lng]);
-  const route = L.polyline(latlngs, {
-    color: '#6fe3c4',
-    weight: 2.5,
-    dashArray: '1, 10',
-    lineCap: 'round',
-    opacity: 0.85
-  }).addTo(map);
-
-  // animate dash offset for a traveling feel
-  let offset = 0;
-  setInterval(() => {
-    offset = (offset - 1 + 1000) % 1000;
-    route.setStyle({ dashOffset: String(offset) });
-  }, 60);
-
-  cities.forEach((c, i) => {
-    L.circleMarker([c.lat, c.lng], {
-      radius: 6,
-      color: c.color,
-      fillColor: c.color,
-      fillOpacity: 1,
-      weight: 2,
-      opacity: 1
-    })
-    .addTo(map)
-    .bindTooltip(c.name, { permanent: false, direction: 'top', offset: [0, -6] });
-  });
-
-  const bounds = L.latLngBounds(latlngs);
-  map.fitBounds(bounds, { padding: [40, 40] });
-
-  // Tab switching (remembers scroll position per tab)
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabPanels = document.querySelectorAll('.tab-panel');
-  const scrollPositions = {};
-  let currentTab = document.querySelector('.tab-btn.active').dataset.tab;
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const newTab = btn.dataset.tab;
-      if (newTab === currentTab) return;
-      scrollPositions[currentTab] = window.scrollY;
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabPanels.forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('panel-' + newTab).classList.add('active');
-      currentTab = newTab;
-      window.scrollTo(0, scrollPositions[newTab] || 0);
-      if (newTab === 'itinerary') {
-        setTimeout(() => map.invalidateSize(), 50);
-      }
-    });
-  });
+// Section tab bar. Tab selection never freezes the header or triggers network access.
+const viewTabs=[...document.querySelectorAll('.app-tab')];
+function activateView(name,{scroll=true}={}){
+ for(const tab of viewTabs){const active=tab.dataset.tab===name;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;tab.classList.toggle('is-active',active);}
+ for(const panel of document.querySelectorAll('.tab-panel')){const active=panel.id==='panel-'+name;panel.hidden=!active;panel.classList.toggle('is-active',active);}
+ if(scroll)window.scrollTo({top:0,behavior:'instant'});
+}
+viewTabs.forEach((tab,index)=>{
+ tab.addEventListener('click',()=>activateView(tab.dataset.tab));
+ tab.addEventListener('keydown',event=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();let next=event.key==='Home'?0:event.key==='End'?viewTabs.length-1:(index+(event.key==='ArrowRight'?1:-1)+viewTabs.length)%viewTabs.length;viewTabs[next].focus();activateView(viewTabs[next].dataset.tab,false);});
+});
+// Budget uses a transparent, editable *reference* rate, not a hidden FX conversion.
+const confirmed={usd:5599.02,sasTHB:24665.97,airbnbTHB:35925.97,people:7};
+const fxInput=document.getElementById('usdRate');
+const fmtTHB=n=>new Intl.NumberFormat('th-TH',{style:'currency',currency:'THB',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+function updateBudget(){
+ const rate=Number(fxInput.value);const valid=Number.isFinite(rate)&&rate>0&&rate<=200;
+ document.getElementById('fxError').hidden=valid;
+ if(!valid)return;
+ const norse=confirmed.usd*rate,sas=confirmed.sasTHB,airbnb=confirmed.airbnbTHB,total=norse+sas+airbnb;
+ document.getElementById('budgetTotal').textContent=fmtTHB(total);
+ document.getElementById('budgetTotalBottom').textContent=fmtTHB(total);
+ document.getElementById('budgetPerPerson').textContent=fmtTHB(total/confirmed.people);
+ document.getElementById('usdEquivalent').textContent='ประมาณ '+fmtTHB(norse);
+ document.getElementById('norseThb').textContent=fmtTHB(norse);
+ for(const [id,value] of [['norseBar',norse],['airbnbBar',airbnb],['sasBar',sas]])document.getElementById(id).style.width=(100*value/total).toFixed(2)+'%';
+}
+fxInput.addEventListener('input',updateBudget);
+updateBudget();
 </script>
-
-</body>
-</html>
+</body></html>
